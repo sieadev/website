@@ -9,15 +9,19 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mdi/js": "^7.4.47",
     "@radix-icons/vue": "^1.0.0",
-    "@vueuse/core": "^11.0.3",
+    "@vueuse/core": "^11.3.0",
     "@vueuse/motion": "^2.2.6",
-    "class-variance-authority": "^0.7.0",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "lucide-vue-next": "^0.483.0",
     "radix-vue": "^1.9.5",
-    "tailwind-merge": "^2.5.2",
+    "reka-ui": "^2.1.0",
+    "tailwind-merge": "^2.6.0",
     "tailwindcss-animate": "^1.0.7",
-    "vue": "^3.4.37"
+    "vue": "^3.4.37",
+    "vue-router": "^4.5.0"
   },
   "devDependencies": {
     "@iconify-json/radix-icons": "^1.2.0",

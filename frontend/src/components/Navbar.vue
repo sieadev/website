@@ -11,6 +11,39 @@ const mode = useColorMode()
   <nav class="w-full border-b border-border bg-background">
     <div class="container flex h-16 items-center justify-between px-4">
       <a href="/" class="text-xl font-bold">Siea.dev</a>
+      
+      <!-- Navigation Links -->
+      <div class="flex space-x-6">
+        <router-link 
+          to="/" 
+          class="text-foreground/60 transition-colors hover:text-foreground"
+          :class="{ 'text-foreground': $route.path === '/' }"
+        >
+          Home
+        </router-link>
+        <router-link 
+          to="/projects" 
+          class="text-foreground/60 transition-colors hover:text-foreground"
+          :class="{ 'text-foreground': $route.path === '/projects' }"
+        >
+          Projects
+        </router-link>
+        <router-link 
+          to="/balu" 
+          class="text-foreground/60 transition-colors hover:text-foreground"
+          :class="{ 'text-foreground': $route.path === '/balu' }"
+        >
+          Balu
+        </router-link>
+        <router-link 
+          to="/contact" 
+          class="text-foreground/60 transition-colors hover:text-foreground"
+          :class="{ 'text-foreground': $route.path === '/contact' }"
+        >
+          Contact
+        </router-link>
+      </div>
+
       <div>
         <DropdownMenu>
           <DropdownMenuTrigger as-child>
