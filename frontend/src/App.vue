@@ -5,7 +5,8 @@ import { Toaster } from '@/components/ui/toast'
 
 <template>
   <div class="min-h-screen">
-    <Navbar />
-    <router-view></router-view>
+    <Toaster/>
+      <Navbar />
+      <router-view></router-view>
   </div>
 </template>
