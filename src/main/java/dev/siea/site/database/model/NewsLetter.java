@@ -1,22 +1,22 @@
 package dev.siea.site.database.model;
 
 public class NewsLetter {
-    private final String title;
-    private final String content;
+    private final String subject;
+    private final String text;
     private final String imageUrl;
 
-    public NewsLetter(String title, String content, String imageUrl) {
-        this.title = title;
-        this.content = content;
+    public NewsLetter(String subject, String text, String imageUrl) {
+        this.subject = subject;
+        this.text = text;
         this.imageUrl = imageUrl;
     }
 
-    public String getTitle() {
-        return title;
+    public String getSubject() {
+        return subject;
     }
 
-    public String getContent() {
-        return content;
+    public String getText() {
+        return text;
     }
 
     public String getImageUrl() {

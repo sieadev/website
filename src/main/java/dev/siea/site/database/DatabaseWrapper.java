@@ -5,7 +5,6 @@ import com.pixelservices.logger.LoggerFactory;
 import com.zaxxer.hikari.HikariConfig;
 import dev.siea.site.database.model.Email;
 import dev.siea.site.database.model.NewsLetter;
-import dev.siea.site.newsletter.MailingList;
 import org.simpleyaml.configuration.ConfigurationSection;
 
 import java.sql.Connection;
@@ -55,7 +54,7 @@ public class DatabaseWrapper {
         }
     }
 
-    public MailingList getMailingList() {
+    public List<Email> getMailingList() {
         List<Email> emails = new ArrayList<>();
 
         String query = "SELECT email, signUpDate FROM mailing_list";
@@ -76,7 +75,7 @@ public class DatabaseWrapper {
             logger.error("Failed to retrieve mailing list", e);
         }
 
-        return new MailingList(emails);
+        return emails;
     }
 
     public NewsLetter getTodayNewsLetter() {
