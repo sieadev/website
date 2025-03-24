@@ -2,19 +2,41 @@
 import { ref } from 'vue'
 import { Button } from '@/components/ui/button'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
+import {useToast} from "@/components/ui/toast";
 
 const email = ref('')
 const isSubmitting = ref(false)
-const showSuccess = ref(false)
 const clickCount = ref(0)
 const showSecret = ref(false)
 
+const { toast } = useToast()
+
 const handleSubmit = async () => {
   isSubmitting.value = true
-  // TODO: Implement newsletter signup logic
-  await new Promise(resolve => setTimeout(resolve, 1000)) // Simulated API call
-  showSuccess.value = true
-  isSubmitting.value = false
+
+  if (!email.value) return;
+
+  try {
+    const response = await fetch(`http://localhost:8080/api/newsletter/signup?email=${encodeURIComponent(email.value)}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if(!response.ok) {
+      throw new Error('🥀 aw hell nah')
+    }
+  } catch (error) {
+    console.error('😥 Subscription error: ', error);
+  } finally {
+    isSubmitting.value = false;
+    toast({
+      title: "Subscribed!",
+      description: "Thank you for subscribing to our newsletter. You will receive daily updates starting tomorrow!",
+    })
+    email.value = ''
+  }
 }
 
 const handleCozyClick = () => {
@@ -86,7 +108,7 @@ const handleCozyClick = () => {
       <p class="about-text">
           Still can not get enough of Balu? Subscribe to our newsletter to receive daily pictures and cool insights about Balu!
       </p>
-      <form @submit.prevent="handleSubmit" class="mt-8 space-y-4" v-if="!showSuccess">
+      <form @submit.prevent="handleSubmit" class="mt-8 space-y-4">
         <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <input
             v-model="email"
@@ -100,11 +122,6 @@ const handleCozyClick = () => {
           </Button>
         </div>
       </form>
-    </div>
-
-    <div v-if="showSuccess" class="bg-green-50 p-6 rounded-lg">
-      <h3 class="text-xl font-semibold text-green-800">Thank you for subscribing!</h3>
-      <p class="text-green-700 mt-2">You will receive Balu's next newsletter in your inbox tomorrow!</p>
     </div>
 
     <Dialog :open="showSecret" @update:open="showSecret = $event">

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
@@ -7,24 +8,46 @@ import { useToast } from '@/components/ui/toast/use-toast'
 
 const { toast } = useToast()
 
-const handleSubmit = (event: Event) => {
+const name = ref('')
+const email = ref('')
+const message = ref('')
+
+const isSubmitting = ref(false)
+
+const handleSubmit = async (event: Event) => {
   event.preventDefault()
-  const form = event.target as HTMLFormElement
-  const formData = new FormData(form)
-  
-  // Here you would typically send the email using your backend
-  console.log({
-    name: formData.get('name'),
-    email: formData.get('email'),
-    message: formData.get('message')
-  })
 
-  toast({
-    title: "Message sent!",
-    description: "Thank you for your message. I'll get back to you soon.",
-  })
+  isSubmitting.value = true
 
-  form.reset()
+  if (!name.value || !email.value || !message.value) {
+    return
+  }
+
+  try {
+    const response = await fetch(`http://localhost:8080/api/contact?name=${encodeURIComponent(name.value)}&email=${encodeURIComponent(email.value)}&message=${encodeURIComponent(message.value)}`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if(!response.ok) {
+      throw new Error('🥀 aw hell nah')
+    }
+
+  } catch (error) {
+    console.error('😥 Subscription error: ', error);
+  } finally {
+    isSubmitting.value = false;
+    toast({
+      title: "Message sent!",
+      description: "Thank you for your message. I'll get back to you soon.",
+    })
+  }
+
+  name.value = ''
+  email.value = ''
+  message.value = ''
 }
 </script>
 
@@ -44,36 +67,38 @@ const handleSubmit = (event: Event) => {
               <label for="name" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                 Name
               </label>
-              <Input id="name" name="name" required placeholder="Your name" />
+              <Input id="name" name="name" v-model="name" required placeholder="Your name" />
             </div>
-            
+
             <div class="space-y-2">
               <label for="email" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                 Email
               </label>
-              <Input 
-                id="email" 
-                name="email" 
-                type="email" 
-                required 
-                placeholder="your@email.com" 
+              <Input
+                  id="email"
+                  name="email"
+                  type="email"
+                  v-model="email"
+                  required
+                  placeholder="your@email.com"
               />
             </div>
-    
+
             <div class="space-y-2">
               <label for="message" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
                 Message
               </label>
-              <Textarea 
-                id="message" 
-                name="message" 
-                required 
-                placeholder="What would you like to say?" 
-                class="min-h-[150px]"
+              <Textarea
+                  id="message"
+                  name="message"
+                  v-model="message"
+                  required
+                  placeholder="What would you like to say?"
+                  class="min-h-[150px]"
               />
             </div>
-    
-            <Button type="submit" class="w-full">
+
+            <Button :loading="isSubmitting" type="submit" class="w-full">
               Send Message
             </Button>
           </form>

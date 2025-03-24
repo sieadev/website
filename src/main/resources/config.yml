@@ -1,11 +1,20 @@
 port: 8080
 
+email:
+  username: ''
+  password: ''
+  properties:
+    mail.smtp.auth: ''
+    mail.smtp.starttls.enable: ''
+    mail.smtp.host: ''
+    mail.smtp.port: ''
+
 # Database configuration
 # Options: SQLite, MySQL, PostgreSQL, h2
 database:
   type: SQLite
   host: localhost:0808
-  database: catbase
+  database: sieadev
   credentials: # Not required for SQLite
     username: root
     password: password

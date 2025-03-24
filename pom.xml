@@ -4,7 +4,7 @@
 
   <groupId>dev.siea.site</groupId>
   <artifactId>Site</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>0.3.1</version>
 
   <repositories>
     <repository>
@@ -19,6 +19,11 @@
       <groupId>com.pixelservices</groupId>
       <artifactId>flash</artifactId>
       <version>1.4.6</version>
+    </dependency>
+    <dependency>
+      <groupId>com.zaxxer</groupId>
+      <artifactId>HikariCP</artifactId>
+      <version>4.0.3</version>
     </dependency>
   </dependencies>
 
@@ -43,6 +48,14 @@
             </configuration>
           </execution>
         </executions>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>10</source>
+          <target>10</target>
+        </configuration>
       </plugin>
     </plugins>
   </build>

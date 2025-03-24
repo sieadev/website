@@ -4,6 +4,9 @@ import com.pixelservices.config.YamlConfig;
 import com.pixelservices.flash.components.FlashServer;
 import com.pixelservices.flash.components.fileserver.DynamicFileServerConfiguration;
 import com.pixelservices.flash.components.fileserver.SourceType;
+import dev.siea.site.handlers.ContactHandler;
+import dev.siea.site.handlers.NewsLetterSignupHandler;
+import dev.siea.site.handlers.NewsLetterTodayHandler;
 
 public class Site {
 
@@ -26,6 +29,11 @@ public class Site {
                 "index.html",
                 SourceType.RESOURCESTREAM
         ));
+
+        server.route("/api")
+                .register(NewsLetterSignupHandler.class)
+                .register(NewsLetterTodayHandler.class)
+                .register(ContactHandler.class);
 
         server.start();
     }
