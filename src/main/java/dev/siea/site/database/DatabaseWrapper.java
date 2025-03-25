@@ -8,6 +8,7 @@ import dev.siea.site.database.model.NewsLetter;
 import org.simpleyaml.configuration.ConfigurationSection;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -18,13 +19,13 @@ public class DatabaseWrapper {
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
     private final DatabaseConnector connector;
 
-    public DatabaseWrapper (ConfigurationSection section) {
+    public DatabaseWrapper(ConfigurationSection section) {
         HikariConfig config = new HikariConfig();
 
         String type = section.getString("type");
         String database = section.getString("database");
 
-        switch (type) {
+        switch (type.toLowerCase()) {
             case "mysql":
                 config.setJdbcUrl("jdbc:mysql://" + section.getString("host") + "/" + database);
                 config.setUsername(section.getString("username"));
@@ -44,11 +45,12 @@ public class DatabaseWrapper {
     }
 
     public void registerEmail(Email email) {
-        String query = "INSERT INTO mailing_list (email) VALUES ('" + email.getEmail() + "')";
+        String query = "INSERT INTO mailing_list (email) VALUES (?)";
 
         try (Connection connection = connector.getConnection();
-            Statement statement = connection.createStatement()) {
-            statement.executeUpdate(query);
+             PreparedStatement statement = connection.prepareStatement(query)) {
+            statement.setString(1, email.getEmail());
+            statement.executeUpdate();
         } catch (SQLException e) {
             logger.error("Failed to add email to mailing list", e);
         }
@@ -60,8 +62,8 @@ public class DatabaseWrapper {
         String query = "SELECT email, signUpDate FROM mailing_list";
 
         try (Connection connection = connector.getConnection();
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query)) {
+             PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
 
             while (resultSet.next()) {
                 String emailAddress = resultSet.getString("email");
@@ -82,8 +84,8 @@ public class DatabaseWrapper {
         String query = "SELECT title, message, image_url FROM mails WHERE date_sent >= CURDATE()";
 
         try (Connection connection = connector.getConnection();
-             Statement statement = connection.createStatement();
-             ResultSet resultSet = statement.executeQuery(query)) {
+             PreparedStatement statement = connection.prepareStatement(query);
+             ResultSet resultSet = statement.executeQuery()) {
 
             if (resultSet.next()) {
                 String title = resultSet.getString("title");
