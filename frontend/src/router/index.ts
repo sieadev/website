@@ -4,7 +4,6 @@ import Balu from '../pages/Balu.vue'
 import Contact from '../pages/Contact.vue'
 import Projects from '@/pages/Projects.vue'
 import TermsOfService from '@/pages/Tos.vue'
-import YamlGenerator from '@/pages/tools/YamlGenerator.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -33,11 +32,6 @@ const router = createRouter({
       path: '/tos',
       name: 'Terms of Service',
       component: TermsOfService
-    },
-    {
-      path: '/yml',
-      name: 'ConfigYML Generator',
-      component: YamlGenerator
     }
   ]
 })

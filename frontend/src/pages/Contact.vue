@@ -24,7 +24,7 @@ const handleSubmit = async (event: Event) => {
   }
 
   try {
-    const response = await fetch(`http://localhost:8080/api/contact?name=${encodeURIComponent(name.value)}&email=${encodeURIComponent(email.value)}&message=${encodeURIComponent(message.value)}`, {
+    const response = await fetch(`/api/contact?name=${encodeURIComponent(name.value)}&email=${encodeURIComponent(email.value)}&message=${encodeURIComponent(message.value)}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

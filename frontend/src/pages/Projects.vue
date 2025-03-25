@@ -28,6 +28,9 @@ const projects = [
     name: 'Flash',
     description: 'A web framework for Java that is designed to make it easy to create web applications. Flash is built on top of the Jetty web server and provides a simple and intuitive API for creating routes, controllers, and views.',
     image: '/projects/flash.png', 
+    tags: ['Java', 'Web', 'Framework'],
+    github: "https://github.com/pixel-services/flash",
+    index: 0
   }
 ]
 </script>

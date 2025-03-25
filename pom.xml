@@ -18,7 +18,7 @@
     <dependency>
       <groupId>com.pixelservices</groupId>
       <artifactId>flash</artifactId>
-      <version>1.4.6</version>
+      <version>1.4.3</version>
     </dependency>
     <dependency>
       <groupId>com.resend</groupId>

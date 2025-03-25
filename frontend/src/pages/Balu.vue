@@ -17,7 +17,7 @@ const handleSubmit = async () => {
   if (!email.value) return;
 
   try {
-    const response = await fetch(`http://localhost:8080/api/newsletter/signup?email=${encodeURIComponent(email.value)}`, {
+    const response = await fetch(`/api/newsletter/signup?email=${encodeURIComponent(email.value)}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
