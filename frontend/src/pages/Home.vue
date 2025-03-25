@@ -7,5 +7,6 @@ import Hero from "@/components/Hero.vue";
     <div class="flex items-center justify-center">
       <Hero />
     </div>
+    <div class="h-[14vh]"></div>
   </div>
 </template>

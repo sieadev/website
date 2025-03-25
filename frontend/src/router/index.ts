@@ -3,6 +3,7 @@ import Home from '../pages/Home.vue'
 import Balu from '../pages/Balu.vue'
 import Contact from '../pages/Contact.vue'
 import Projects from '@/pages/Projects.vue'
+import TermsOfService from '@/pages/Tos.vue'
 import YamlGenerator from '@/pages/tools/YamlGenerator.vue'
 
 const router = createRouter({
@@ -27,6 +28,11 @@ const router = createRouter({
       path: '/contact',
       name: 'Contact',
       component: Contact
+    },
+    {
+      path: '/tos',
+      name: 'Terms of Service',
+      component: TermsOfService
     },
     {
       path: '/yml',
