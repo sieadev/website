@@ -9,7 +9,7 @@ import { Card, CardContent } from '@/components/ui/card'
       <div class="name-section">
         <h1 class="name-container">
           <span class="name-default">Sieadev</span>
-          <span class="name-hover">Your Dev?</span>
+          <span class="name-hover">↑ ↑ ↓ ↓ ← → ← →</span>
         </h1>
         <div class="title-container">
           <span class="title">Fullstack Developer</span>
@@ -44,7 +44,7 @@ import { Card, CardContent } from '@/components/ui/card'
 
 <style scoped>
 .hero-container {
-  min-height: 70vh;  
+  min-height: 50vh;  
   display: flex;
   align-items: center;
   justify-content: center;
