@@ -18,7 +18,8 @@ export default defineConfig({
     },
   },
   build: {
-    outDir: path.resolve(__dirname, '../src/main/resources/frontend'),
+    outDir: 'dist',
     emptyOutDir: true,
-  }
+  },
+  base: '/'
 })
