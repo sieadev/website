@@ -3,6 +3,7 @@ import Home from '../views/Home.vue'
 import Contact from '../views/Contact.vue'
 import Projects from '@/views/Projects.vue'
 import TermsOfService from '@/views/Tos.vue'
+import NotFound from '@/views/NotFound.vue'
 
 const router = createRouter({
   history: createWebHistory(),
@@ -26,6 +27,11 @@ const router = createRouter({
       path: '/tos',
       name: 'Terms of Service',
       component: TermsOfService
+    },
+    {
+      path: '/:pathMatch(.*)*',
+      name: 'NotFound',
+      component: NotFound
     }
   ]
 })
