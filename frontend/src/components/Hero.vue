@@ -23,7 +23,7 @@ import { Card, CardContent } from '@/components/ui/card'
           </div>
         </div>
         <p class="about-text">
-          Hey im Finley Voßwinkel, often known as Sieadev. Im an 18 year old fullstack developer from Germany. In 2024 I started my own Hosting and Software Company where I now work in Backend Development. 
+          Hey im Finley Voßwinkel, often known as Sieadev. Im an 19 year old fullstack developer from Germany. I started coding when I was 15 and have found great joy in Backend-Development.
         </p>
         <div class="social-links">
           <a href="https://github.com/sieadev" target="_blank" class="social-link">
