@@ -48,6 +48,13 @@ const toggleMenu = () => {
             >
               Contact
             </router-link>
+            <a 
+              href="https://docs.siea.dev" 
+              target="_blank"
+              class="text-foreground/60 transition-colors hover:text-foreground font-medium"
+            >
+              Docs
+            </a>
           </div>
         </div>
 
@@ -110,6 +117,14 @@ const toggleMenu = () => {
           >
             {{ route.name }}
           </router-link>
+          <a 
+            href="https://docs.siea.dev" 
+            target="_blank"
+            class="text-foreground/60 transition-colors hover:text-foreground py-2"
+            @click="isMenuOpen = false"
+          >
+            Docs
+          </a>
 
           <DropdownMenu>
             <DropdownMenuTrigger as-child>

@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { mdiGithub } from '@mdi/js'
+import { mdiGithub, mdiBookOpenPageVariant  } from '@mdi/js'
 
 interface Props {
   name: string
@@ -7,6 +7,7 @@ interface Props {
   image: string
   tags: string[]
   github?: string
+  docs?: string
   index: number
 }
 
@@ -37,11 +38,18 @@ defineProps<Props>()
             </span>
           </div>
           
-          <a v-if="github" :href="github" target="_blank" class="text-muted-foreground hover:text-foreground">
-            <svg class="w-6 h-6" viewBox="0 0 24 24">
-              <path :d="mdiGithub" fill="currentColor" />
-            </svg>
-          </a>
+          <div class="flex gap-3">
+            <a v-if="docs" :href="docs" target="_blank" class="text-muted-foreground hover:text-foreground">
+              <svg class="w-6 h-6" viewBox="0 0 24 24">
+                <path :d="mdiBookOpenPageVariant " fill="currentColor" />
+              </svg>
+            </a>
+            <a v-if="github" :href="github" target="_blank" class="text-muted-foreground hover:text-foreground">
+              <svg class="w-6 h-6" viewBox="0 0 24 24">
+                <path :d="mdiGithub" fill="currentColor" />
+              </svg>
+            </a>
+          </div>
         </div>
       </div>
     </div>

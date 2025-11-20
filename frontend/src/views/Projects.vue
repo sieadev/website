@@ -3,19 +3,21 @@ import Project from '@/components/Project.vue'
 import { mdiGithub } from '@mdi/js'
 
 const projects = [
+    {
+    name: 'Jonion',
+    description: 'Jonion is a lightweight, flexible plugin framework for Java applications. It provides a clean, modular architecture that makes it easy to build extensible systems by "layering" functionality through plugins.',
+    image: '/projects/ptkp.png',
+    tags: ['Java', 'Framework', 'Modular', 'API'],
+    github: 'https://github.com/sieadev/Jonion',
+    docs: 'https://docs.siea.dev/jonion/'
+  },
   {
     name: 'Mobot',
     description: 'A modular bot framework for Discord. Inspired by the Spigot Plugin System, Mobot allows developers to create custom modules that can be loaded and unloaded on the fly. With a feature-rich API, Mobot makes it easy for developers to create custom commands, events, and more.',
     image: '/projects/mobot.png',
     tags: ['Java', 'Discord API', 'Modular'],
-    github: 'https://github.com/sieadev/mobot'
-  },
-  {
-    name: 'PTKP',
-    description: 'PTKP is a lightweight and flexible plugin system framework built for Java applications. It provides a simple yet powerful foundation for building extensible systems using a modular plugin architecture.',
-    image: '/projects/ptkp.png',
-    tags: ['Java', 'Framework', 'Modular', 'API'],
-    github: 'https://github.com/pixel-services/ptkp'
+    github: 'https://github.com/sieadev/mobot',
+    docs: 'https://docs.siea.dev/mobot/'
   },
   {
     name: 'Kora',

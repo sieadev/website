@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { mdiOfficeBuilding, mdiGithub, mdiLinkedin} from '@mdi/js'
+import { mdiOfficeBuilding, mdiGithub, mdiLinkedin, mdiBookOpenPageVariant } from '@mdi/js'
 import { Card, CardContent } from '@/components/ui/card'
 </script>
 
@@ -34,6 +34,11 @@ import { Card, CardContent } from '@/components/ui/card'
           <a href="https://www.linkedin.com/in/finley-voßwinkel-99097128b" target="_blank" class="social-link">
             <svg viewBox="0 0 24 24">
               <path :d="mdiLinkedin" />
+            </svg>
+          </a>
+          <a href="https://docs.siea.dev" target="_blank" class="social-link">
+            <svg viewBox="0 0 24 24">
+              <path :d="mdiBookOpenPageVariant " />
             </svg>
           </a>
         </div>
