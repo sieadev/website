@@ -20,15 +20,8 @@ const projects = [
     docs: 'https://docs.siea.dev/mobot/'
   },
   {
-    name: 'Kora',
-    description: 'Kora is a high-performance, deeply object-oriented programming language where everything is treated as an object. No statics, no globals, and no exceptions to the object model. ',
-    image: '/projects/kora.png',
-    tags: ['Language', 'Compiler', 'Interpreter', 'VM'],
-    github: 'https://github.com/sieadev/Kora'
-  },
-  {
     name: 'Flash',
-    description: 'A web framework for Java that is designed to make it easy to create web applications. Flash is built on top of the Jetty web server and provides a simple and intuitive API for creating routes, controllers, and views.',
+    description: 'A framework for Java designed to easily create small web applications. Flash is built on top of the Jetty web server and provides a simple and intuitive API for creating routes, controllers, and views.',
     image: '/projects/flash.png', 
     tags: ['Java', 'Web', 'Framework'],
     github: "https://github.com/pixel-services/flash",
