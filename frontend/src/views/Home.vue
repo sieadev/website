@@ -67,7 +67,7 @@ const categories = ref<Category[]>([
       { name: "Spring", icon: mdiLeaf, startYear: 2023 },
       { name: "JDA", icon: mdiMessageFast, startYear: 2023 },
       { name: "Vue", icon: mdiVuejs, startYear: 2024 },
-      { name: "PTKP", icon: mdiPackage, startYear: 2024 },
+      { name: "Jonion", icon: mdiPackage, startYear: 2024 },
       { name: "Flash", icon: mdiLightningBolt, startYear: 2024 },
       { name: "Quarkus", icon: mdiLeaf, startYear: 2025 }
     ],
