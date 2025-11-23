@@ -49,7 +49,7 @@ const projects = [
 
     <div class="space-y-6 max-w-4xl mx-auto relative">
       <Project 
-        v-for="(project, index) in projects.slice(0, 4)" 
+        v-for="(project, index) in projects.slice(0, 3)"
         :key="project.name"
         v-bind="project"
         :index="index"
@@ -71,8 +71,8 @@ const projects = [
         </div>
         <div class="opacity-50 blur-[2px]">
           <Project 
-            v-bind="projects[4]"
-            :index="4"
+            v-bind="projects[3]"
+            :index="3"
           />
         </div>
       </div>
