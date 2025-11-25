@@ -42,6 +42,13 @@ const toggleMenu = () => {
               Projects
             </router-link>
             <router-link 
+              to="/journey" 
+              class="text-foreground/60 transition-colors hover:text-foreground font-medium"
+              :class="{ 'text-foreground': $route.path === '/journey' }"
+            >
+              Journey
+            </router-link>
+            <router-link 
               to="/contact" 
               class="text-foreground/60 transition-colors hover:text-foreground font-medium"
               :class="{ 'text-foreground': $route.path === '/contact' }"
@@ -106,6 +113,7 @@ const toggleMenu = () => {
             v-for="route in [
               { path: '/', name: 'Home' },
               { path: '/projects', name: 'Projects' },
+              { path: '/journey', name: 'Journey' },
               { path: '/contact', name: 'Contact' },
               { path: '/tos', name: 'TOS' },
             ]"

@@ -135,7 +135,7 @@ const selectedCategory = computed(() =>
     </div>
     
 
-    <div class="w-full max-w-2xl px-4 sm:min-h-[45vh] pb-10 sm:pb-0">
+    <div class="w-full max-w-2xl px-4 pt-10 pb-10 sm:min-h-[45vh] lg:pt-0 lg:pb-0">
 
       <Card>
           <CardHeader>
