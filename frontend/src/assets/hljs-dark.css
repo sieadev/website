@@ -1,0 +1,93 @@
+/* GitHub Dark theme scoped to dark mode only - for project markdown code blocks */
+.dark .project-markdown pre code.hljs {
+  color: #c9d1d9;
+  background: #0d1117;
+  border-radius: 0.5rem;
+}
+
+.dark .project-markdown pre code .hljs-doctag,
+.dark .project-markdown pre code .hljs-keyword,
+.dark .project-markdown pre code .hljs-meta .hljs-keyword,
+.dark .project-markdown pre code .hljs-template-tag,
+.dark .project-markdown pre code .hljs-template-variable,
+.dark .project-markdown pre code .hljs-type,
+.dark .project-markdown pre code .hljs-variable.language_ {
+  color: #ff7b72;
+}
+
+.dark .project-markdown pre code .hljs-title,
+.dark .project-markdown pre code .hljs-title.class_,
+.dark .project-markdown pre code .hljs-title.class_.inherited__,
+.dark .project-markdown pre code .hljs-title.function_ {
+  color: #d2a8ff;
+}
+
+.dark .project-markdown pre code .hljs-attr,
+.dark .project-markdown pre code .hljs-attribute,
+.dark .project-markdown pre code .hljs-literal,
+.dark .project-markdown pre code .hljs-meta,
+.dark .project-markdown pre code .hljs-number,
+.dark .project-markdown pre code .hljs-operator,
+.dark .project-markdown pre code .hljs-variable,
+.dark .project-markdown pre code .hljs-selector-attr,
+.dark .project-markdown pre code .hljs-selector-class,
+.dark .project-markdown pre code .hljs-selector-id {
+  color: #79c0ff;
+}
+
+.dark .project-markdown pre code .hljs-regexp,
+.dark .project-markdown pre code .hljs-string,
+.dark .project-markdown pre code .hljs-meta .hljs-string {
+  color: #a5d6ff;
+}
+
+.dark .project-markdown pre code .hljs-built_in,
+.dark .project-markdown pre code .hljs-symbol {
+  color: #ffa657;
+}
+
+.dark .project-markdown pre code .hljs-comment,
+.dark .project-markdown pre code .hljs-code,
+.dark .project-markdown pre code .hljs-formula {
+  color: #8b949e;
+}
+
+.dark .project-markdown pre code .hljs-name,
+.dark .project-markdown pre code .hljs-quote,
+.dark .project-markdown pre code .hljs-selector-tag,
+.dark .project-markdown pre code .hljs-selector-pseudo {
+  color: #7ee787;
+}
+
+.dark .project-markdown pre code .hljs-subst {
+  color: #c9d1d9;
+}
+
+.dark .project-markdown pre code .hljs-section {
+  color: #1f6feb;
+  font-weight: bold;
+}
+
+.dark .project-markdown pre code .hljs-bullet {
+  color: #f2cc60;
+}
+
+.dark .project-markdown pre code .hljs-emphasis {
+  color: #c9d1d9;
+  font-style: italic;
+}
+
+.dark .project-markdown pre code .hljs-strong {
+  color: #c9d1d9;
+  font-weight: bold;
+}
+
+.dark .project-markdown pre code .hljs-addition {
+  color: #aff5b4;
+  background-color: #033a16;
+}
+
+.dark .project-markdown pre code .hljs-deletion {
+  color: #ffdcd7;
+  background-color: #67060c;
+}
