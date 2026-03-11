@@ -3,6 +3,10 @@ target/
 !**/src/main/**/target/
 !**/src/test/**/target/
 
+### Frontend ###
+dist/
+node_modules/
+
 ### IntelliJ IDEA ###
 .idea/*
 *.iws
