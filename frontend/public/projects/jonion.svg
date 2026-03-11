@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 640" width="1100" height="640">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=IBM+Plex+Mono:wght@400;500&amp;display=swap');
+    </style>
+
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#07090d"/>
+      <stop offset="100%" style="stop-color:#0d1117"/>
+    </linearGradient>
+
+    <radialGradient id="glow1" cx="55%" cy="40%" r="55%">
+      <stop offset="0%" style="stop-color:#63d993;stop-opacity:0.11"/>
+      <stop offset="100%" style="stop-color:#63d993;stop-opacity:0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="10%" cy="88%" r="38%">
+      <stop offset="0%" style="stop-color:#3ecf8e;stop-opacity:0.06"/>
+      <stop offset="100%" style="stop-color:#3ecf8e;stop-opacity:0"/>
+    </radialGradient>
+
+    <linearGradient id="topbar" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#63d993;stop-opacity:0"/>
+      <stop offset="28%"  style="stop-color:#63d993;stop-opacity:1"/>
+      <stop offset="62%"  style="stop-color:#3ecf8e;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#3ecf8e;stop-opacity:0"/>
+    </linearGradient>
+
+    <clipPath id="roundclip">
+      <rect width="1100" height="640" rx="16" ry="16"/>
+    </clipPath>
+
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#63d993" stroke-width="0.35" stroke-opacity="0.07"/>
+    </pattern>
+
+    <filter id="textglow" x="-20%" y="-30%" width="140%" height="160%">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <g clip-path="url(#roundclip)">
+
+    <rect width="1100" height="640" fill="url(#bg)"/>
+    <rect width="1100" height="640" fill="url(#grid)"/>
+    <rect width="1100" height="640" fill="url(#glow1)"/>
+    <rect width="1100" height="640" fill="url(#glow2)"/>
+
+    <rect y="0" width="1100" height="3" fill="url(#topbar)"/>
+    <rect width="1100" height="640" rx="16" ry="16" fill="none" stroke="#1a1f2e" stroke-width="1.5"/>
+
+    <!-- JONION wordmark -->
+    <text x="550" y="376"
+      font-family="'Bebas Neue', 'Arial Narrow', Impact, sans-serif"
+      font-size="192"
+      font-weight="400"
+      fill="#eef2ee"
+      letter-spacing="22"
+      text-anchor="middle"
+      filter="url(#textglow)">JONION</text>
+
+    <!-- Tagline — the smallest text, kept large -->
+    <text x="550" y="436"
+      font-family="'IBM Plex Mono', 'Courier New', monospace"
+      font-size="22"
+      fill="#4db87a"
+      letter-spacing="8"
+      text-anchor="middle">A LAYERED APPROACH TO JAVA PLUGINS</text>
+
+    <rect y="637" width="1100" height="3" fill="url(#topbar)" opacity="0.35"/>
+
+  </g>
+</svg>

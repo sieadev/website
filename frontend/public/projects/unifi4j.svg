@@ -1,0 +1,152 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 640" width="1100" height="640">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&amp;family=DM+Mono:wght@400;500&amp;display=swap');
+    </style>
+
+    <!-- Deep space background -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="60%" y2="100%">
+      <stop offset="0%" style="stop-color:#01040f"/>
+      <stop offset="60%" style="stop-color:#020818"/>
+      <stop offset="100%" style="stop-color:#030d24"/>
+    </linearGradient>
+
+    <!-- Nebula glow - centred behind icon -->
+    <radialGradient id="nebula" cx="50%" cy="38%" r="38%">
+      <stop offset="0%" style="stop-color:#1a6aff;stop-opacity:0.18"/>
+      <stop offset="50%" style="stop-color:#0d3eaa;stop-opacity:0.08"/>
+      <stop offset="100%" style="stop-color:#0d3eaa;stop-opacity:0"/>
+    </radialGradient>
+
+    <!-- Subtle edge vignette -->
+    <radialGradient id="vignette" cx="50%" cy="50%" r="70%">
+      <stop offset="60%" style="stop-color:#000000;stop-opacity:0"/>
+      <stop offset="100%" style="stop-color:#000000;stop-opacity:0.55"/>
+    </radialGradient>
+
+    <!-- Horizontal accent line gradient -->
+    <linearGradient id="accentline" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"   style="stop-color:#1a6aff;stop-opacity:0"/>
+      <stop offset="35%"  style="stop-color:#4d9fff;stop-opacity:1"/>
+      <stop offset="65%"  style="stop-color:#4d9fff;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#1a6aff;stop-opacity:0"/>
+    </linearGradient>
+
+    <!-- Icon glow filter -->
+    <filter id="iconglow" x="-60%" y="-60%" width="220%" height="220%">
+      <feGaussianBlur stdDeviation="12" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Soft text glow -->
+    <filter id="textglow" x="-15%" y="-30%" width="130%" height="160%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Star blur -->
+    <filter id="starblur">
+      <feGaussianBlur stdDeviation="0.6"/>
+    </filter>
+
+    <clipPath id="roundclip">
+      <rect width="1100" height="640" rx="18" ry="18"/>
+    </clipPath>
+  </defs>
+
+  <g clip-path="url(#roundclip)">
+
+    <!-- Background -->
+    <rect width="1100" height="640" fill="url(#bg)"/>
+
+    <!-- Nebula bloom -->
+    <rect width="1100" height="640" fill="url(#nebula)"/>
+
+    <!-- Star field -->
+    <g filter="url(#starblur)" opacity="0.7">
+      <circle cx="87"  cy="43"  r="0.8" fill="#ffffff"/>
+      <circle cx="234" cy="118" r="0.6" fill="#aac4ff"/>
+      <circle cx="412" cy="29"  r="1.0" fill="#ffffff"/>
+      <circle cx="560" cy="88"  r="0.7" fill="#c8d8ff"/>
+      <circle cx="703" cy="52"  r="0.9" fill="#ffffff"/>
+      <circle cx="845" cy="21"  r="0.6" fill="#aac4ff"/>
+      <circle cx="991" cy="76"  r="0.8" fill="#ffffff"/>
+      <circle cx="143" cy="201" r="0.6" fill="#c8d8ff"/>
+      <circle cx="320" cy="178" r="0.9" fill="#ffffff"/>
+      <circle cx="478" cy="155" r="0.7" fill="#aac4ff"/>
+      <circle cx="672" cy="192" r="0.6" fill="#ffffff"/>
+      <circle cx="810" cy="140" r="1.0" fill="#c8d8ff"/>
+      <circle cx="950" cy="210" r="0.7" fill="#ffffff"/>
+      <circle cx="55"  cy="310" r="0.6" fill="#aac4ff"/>
+      <circle cx="198" cy="420" r="0.8" fill="#ffffff"/>
+      <circle cx="388" cy="580" r="0.6" fill="#c8d8ff"/>
+      <circle cx="720" cy="530" r="0.9" fill="#ffffff"/>
+      <circle cx="880" cy="490" r="0.7" fill="#aac4ff"/>
+      <circle cx="1040" cy="390" r="0.6" fill="#ffffff"/>
+      <circle cx="1060" cy="560" r="0.8" fill="#c8d8ff"/>
+      <circle cx="30"  cy="590" r="0.7" fill="#ffffff"/>
+      <circle cx="260" cy="610" r="0.6" fill="#aac4ff"/>
+      <circle cx="600" cy="620" r="0.9" fill="#ffffff"/>
+    </g>
+
+    <!-- Vignette overlay -->
+    <rect width="1100" height="640" fill="url(#vignette)"/>
+
+    <!-- Border -->
+    <rect width="1100" height="640" rx="18" ry="18" fill="none" stroke="#0d2a5e" stroke-width="1.5"/>
+
+    <!-- Top accent line -->
+    <rect y="0" width="1100" height="2" fill="url(#accentline)"/>
+
+    <!-- WiFi icon — glowing, centered -->
+    <g filter="url(#iconglow)">
+      <!-- Outer arc r=56, ~100deg sweep -->
+      <path d="M 511 218 A 56 56 0 0 1 589 218"
+        fill="none" stroke="#4d9fff" stroke-width="4" stroke-linecap="round" stroke-opacity="0.7"/>
+      <!-- Middle arc r=37 -->
+      <path d="M 524 231 A 37 37 0 0 1 576 231"
+        fill="none" stroke="#4d9fff" stroke-width="4" stroke-linecap="round" stroke-opacity="0.85"/>
+      <!-- Inner arc r=19 -->
+      <path d="M 537 244 A 19 19 0 0 1 563 244"
+        fill="none" stroke="#7bbfff" stroke-width="4" stroke-linecap="round"/>
+      <!-- Dot -->
+      <circle cx="550" cy="257" r="6" fill="#7bbfff"/>
+    </g>
+
+    <!-- Thin horizontal rule above wordmark -->
+    <rect x="340" y="298" width="420" height="1" fill="url(#accentline)" opacity="0.4"/>
+
+    <!-- UNIFI4J wordmark -->
+    <text x="550" y="390"
+      font-family="'Orbitron', 'Arial Narrow', sans-serif"
+      font-size="108"
+      font-weight="900"
+      fill="#e8f2ff"
+      letter-spacing="16"
+      text-anchor="middle"
+      filter="url(#textglow)">UNIFI4J</text>
+
+    <!-- Thin rule below wordmark -->
+    <rect x="260" y="410" width="580" height="1" fill="url(#accentline)" opacity="0.3"/>
+
+    <!-- Tagline -->
+    <text x="550" y="460"
+      font-family="'DM Mono', 'Courier New', monospace"
+      font-size="19"
+      font-weight="400"
+      fill="#4d7ab5"
+      letter-spacing="5"
+      text-anchor="middle">JAVA CLIENT FOR THE UNIFI NETWORK API</text>
+
+    <!-- Bottom accent line -->
+    <rect y="638" width="1100" height="2" fill="url(#accentline)" opacity="0.3"/>
+
+  </g>
+</svg>
