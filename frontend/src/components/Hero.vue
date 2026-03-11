@@ -14,7 +14,7 @@ import { Card, CardContent } from '@/components/ui/card'
         <div class="title-container">
           <span class="title">Fullstack Developer</span>
           <div class="company">
-            <a href="https://pixel-services.com" target="_blank" class="company-link">
+            <a href="https://pixel-services.com" target="_blank" rel="noopener" class="company-link">
               <svg class="company-icon" viewBox="0 0 24 24">
                 <path :d="mdiOfficeBuilding" />
               </svg>
@@ -26,19 +26,19 @@ import { Card, CardContent } from '@/components/ui/card'
           Hey im Finley Voßwinkel, often known as Sieadev. Im an 19 year old fullstack developer from Germany. I started coding when I was 15 and have found great joy in Backend-Development.
         </p>
         <div class="social-links">
-          <a href="https://github.com/sieadev" target="_blank" class="social-link">
+          <a href="https://github.com/sieadev" target="_blank" rel="noopener" class="social-link">
             <svg viewBox="0 0 24 24">
               <path :d="mdiGithub" />
             </svg>
           </a>
-          <a href="https://www.linkedin.com/in/finley-voßwinkel-99097128b" target="_blank" class="social-link">
+          <a href="https://www.linkedin.com/in/finley-voßwinkel-99097128b" target="_blank" rel="noopener" class="social-link">
             <svg viewBox="0 0 24 24">
               <path :d="mdiLinkedin" />
             </svg>
           </a>
-          <a href="https://docs.siea.dev" target="_blank" class="social-link">
+          <a href="https://docs.siea.dev" target="_blank" rel="noopener" class="social-link">
             <svg viewBox="0 0 24 24">
-              <path :d="mdiBookOpenPageVariant " />
+              <path :d="mdiBookOpenPageVariant" />
             </svg>
           </a>
         </div>
@@ -49,7 +49,7 @@ import { Card, CardContent } from '@/components/ui/card'
 
 <style scoped>
 .hero-container {
-  min-height: 50vh;  
+  min-height: 50vh;
   display: flex;
   align-items: center;
   justify-content: center;

@@ -95,4 +95,12 @@
   body {
     @apply bg-background text-foreground;
   }
+  /* Hide scrollbars globally (scroll still works) */
+  * {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  *::-webkit-scrollbar {
+    display: none;
+  }
 }

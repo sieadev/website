@@ -20,7 +20,7 @@ defineProps<Props>()
       <div :class="['w-full md:w-1/3', { 'md:order-2': index % 2 === 1 }]">
         <img :src="image" :alt="name" class="w-full h-48 object-cover rounded-lg" />
       </div>
-      
+
       <div class="flex flex-col flex-1 justify-between">
         <div>
           <h3 class="text-2xl font-bold mb-4">{{ name }}</h3>
