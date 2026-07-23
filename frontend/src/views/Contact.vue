@@ -4,50 +4,30 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
-import { useToast } from '@/components/ui/toast/use-toast'
 
-const { toast } = useToast()
-
-const name = ref('')
-const email = ref('')
+const title = ref('')
 const message = ref('')
 
-const isSubmitting = ref(false)
+// XOR-obfuscated bytes for contact@siea.dev — never stored as plaintext in the bundle
+const KEY = 0x5a
+const ENCODED = [57, 53, 52, 46, 59, 57, 46, 26, 41, 51, 63, 59, 116, 62, 63, 44]
 
-const handleSubmit = async (event: Event) => {
+function decodeEmail(): string {
+  return String.fromCharCode(...ENCODED.map((b) => b ^ KEY))
+}
+
+function handleSubmit(event: Event) {
   event.preventDefault()
 
-  isSubmitting.value = true
-
-  if (!name.value || !email.value || !message.value) {
+  if (!title.value || !message.value) {
     return
   }
 
-  try {
-    const response = await fetch(`/api/contact?name=${encodeURIComponent(name.value)}&email=${encodeURIComponent(email.value)}&message=${encodeURIComponent(message.value)}`, {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    });
+  const address = decodeEmail()
+  const subject = encodeURIComponent(title.value)
+  const body = encodeURIComponent(message.value)
 
-    if(!response.ok) {
-      throw new Error('🥀 aw hell nah')
-    }
-
-  } catch (error) {
-    console.error('😥 Subscription error: ', error);
-  } finally {
-    isSubmitting.value = false;
-    toast({
-      title: "Message sent!",
-      description: "Thank you for your message. I'll get back to you soon.",
-    })
-  }
-
-  name.value = ''
-  email.value = ''
-  message.value = ''
+  window.location.href = `mailto:${address}?subject=${subject}&body=${body}`
 }
 </script>
 
@@ -64,24 +44,10 @@ const handleSubmit = async (event: Event) => {
         <CardContent>
           <form @submit="handleSubmit" class="space-y-6">
             <div class="space-y-2">
-              <label for="name" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                Name
+              <label for="title" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
+                Title
               </label>
-              <Input id="name" name="name" v-model="name" required placeholder="Your name" />
-            </div>
-
-            <div class="space-y-2">
-              <label for="email" class="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                Email
-              </label>
-              <Input
-                  id="email"
-                  name="email"
-                  type="email"
-                  v-model="email"
-                  required
-                  placeholder="your@email.com"
-              />
+              <Input id="title" name="title" v-model="title" required placeholder="What's this about?" />
             </div>
 
             <div class="space-y-2">
@@ -98,7 +64,7 @@ const handleSubmit = async (event: Event) => {
               />
             </div>
 
-            <Button :loading="isSubmitting" type="submit" class="w-full">
+            <Button type="submit" class="w-full">
               Send Message
             </Button>
           </form>

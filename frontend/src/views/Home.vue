@@ -13,7 +13,6 @@ import {
   mdiLanguageCss3,
   mdiLanguageCsharp,
   mdiLanguageRust,
-  mdiAlphaKBox,
   mdiPackage,
   mdiVuejs,
   mdiLightningBolt,
@@ -55,7 +54,6 @@ const categories = ref<Category[]>([
       { name: "C", icon: mdiLanguageC, startYear: 2024 },
       { name: "C#", icon: mdiLanguageCsharp, startYear: 2024 },
       { name: "Rust", icon: mdiLanguageRust, startYear: 2024 },
-      { name: "Kora", icon: mdiAlphaKBox, startYear: 2025 }
     ],
   },
   {
@@ -135,17 +133,44 @@ const selectedCategory = computed(() =>
     </div>
     
 
-    <div class="w-full max-w-2xl px-4 pt-10 pb-10 sm:min-h-[45vh] lg:pt-0 lg:pb-0">
+    <div class="w-full max-w-2xl px-4 pt-10 pb-10 sm:min-h-[45vh] lg:pt-0 mb-10">
 
       <Card>
           <CardHeader>
             <CardTitle>My Skill Set</CardTitle>
           </CardHeader>
         <CardContent>
-          <div class="flex flex-wrap items-center justify-center gap-2 mb-6">
-            <div class="inline-flex rounded-md border p-1 bg-card gap-1">
-              <template v-for="c in categories" :key="c.key">
+          <!-- Mobile: all categories as stacked sections (no filter UI) -->
+          <div class="space-y-8 sm:hidden">
+            <section v-for="c in categories" :key="c.key">
+              <h3 class="text-sm font-semibold tracking-wide text-muted-foreground uppercase mb-3">
+                {{ c.label }}
+              </h3>
+              <div class="grid grid-cols-1 gap-3">
+                <div
+                  v-for="s in c.skills"
+                  :key="s.name"
+                  :class="['flex items-center gap-3 border rounded-md p-3', levelClass(s.startYear)]"
+                >
+                  <svg class="w-6 h-6 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                    <path :d="s.icon" />
+                  </svg>
+                  <div class="flex flex-col">
+                    <span class="font-medium leading-none">{{ s.name }}</span>
+                    <span class="text-xs text-muted-foreground">since {{ s.startYear }} · {{ formatExperience(s.startYear) }}</span>
+                  </div>
+                </div>
+              </div>
+            </section>
+          </div>
+
+          <!-- Desktop: category filter + grid -->
+          <div class="hidden sm:block">
+            <div class="mb-6 flex justify-center">
+              <div class="inline-flex rounded-md border p-1 bg-card gap-1">
                 <Button
+                  v-for="c in categories"
+                  :key="c.key"
                   variant="ghost"
                   :class="[
                     'px-3 py-1 h-9 rounded-md',
@@ -155,29 +180,28 @@ const selectedCategory = computed(() =>
                 >
                   {{ c.label }}
                 </Button>
-              </template>
+              </div>
             </div>
-          </div>
 
-          <div
-            v-if="selectedCategory"
-            class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3"
-          >
             <div
-              v-for="s in selectedCategory.skills"
-              :key="s.name"
-              :class="['flex items-center gap-3 border rounded-md p-3', levelClass(s.startYear)]"
+              v-if="selectedCategory"
+              class="grid grid-cols-2 lg:grid-cols-3 gap-3"
             >
-              <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                <path :d="s.icon" />
-              </svg>
-              <div class="flex flex-col">
-                <span class="font-medium leading-none">{{ s.name }}</span>
-                <span class="text-xs text-muted-foreground">since {{ s.startYear }} · {{ formatExperience(s.startYear) }}</span>
+              <div
+                v-for="s in selectedCategory.skills"
+                :key="s.name"
+                :class="['flex items-center gap-3 border rounded-md p-3', levelClass(s.startYear)]"
+              >
+                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
+                  <path :d="s.icon" />
+                </svg>
+                <div class="flex flex-col">
+                  <span class="font-medium leading-none">{{ s.name }}</span>
+                  <span class="text-xs text-muted-foreground">since {{ s.startYear }} · {{ formatExperience(s.startYear) }}</span>
+                </div>
               </div>
             </div>
           </div>
-
         </CardContent>
       </Card>
     </div>

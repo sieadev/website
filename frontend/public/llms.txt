@@ -1,0 +1,30 @@
+# siea.dev
+
+> Personal site of Finley Voßwinkel (Sieadev) — fullstack developer from Germany.
+
+Sieadev builds backend systems, Java frameworks, Discord bots, and web apps. Works at Pixel Services.
+
+## Pages
+
+- [Home](https://siea.dev/): About Sieadev, skills, and contact links
+- [Projects](https://siea.dev/projects): Open-source and personal projects
+- [Journey](https://siea.dev/journey): Education and career timeline
+- [Contact](https://siea.dev/contact): Send a message via email client
+- [Terms of Service](https://siea.dev/tos): Legal terms
+
+## Projects
+
+- [Jonion](https://siea.dev/projects/jonion): Lightweight Java plugin framework ([docs](https://docs.siea.dev/jonion/))
+- [Mobot](https://siea.dev/projects/mobot): Modular Discord bot framework ([docs](https://docs.siea.dev/mobot/))
+- [Unifi4J](https://siea.dev/projects/unifi4j): Java client for the UniFi Network API ([docs](https://docs.siea.dev/unifi4j/))
+
+## Agent resources
+
+- [Full site summary](https://siea.dev/llms-full.txt)
+- [Docs](https://docs.siea.dev/)
+- [GitHub](https://github.com/sieadev)
+- [Agent skills index](https://siea.dev/.well-known/agent-skills/index.json)
+
+## Markdown
+
+Request any page with `Accept: text/markdown` to receive a markdown representation.

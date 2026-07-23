@@ -1,16 +1,28 @@
 <script setup lang="ts">
 import { Button } from '@/components/ui/button'
-import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { Icon } from '@iconify/vue'
 import { useColorMode } from '@vueuse/core'
 import logo from "/logo.svg" 
 import { ref } from 'vue'
 
-const mode = useColorMode()
+const mode = useColorMode({
+  attribute: 'class',
+  modes: {
+    light: 'light',
+    dark: 'dark',
+  },
+})
+const { store } = mode
 const isMenuOpen = ref(false)
 
 const toggleMenu = () => {
   isMenuOpen.value = !isMenuOpen.value
+}
+
+function toggleTheme() {
+  if (store.value === 'light') store.value = 'dark'
+  else if (store.value === 'dark') store.value = 'auto'
+  else store.value = 'light'
 }
 </script>
 
@@ -58,38 +70,40 @@ const toggleMenu = () => {
             <a 
               href="https://docs.siea.dev" 
               target="_blank"
-              class="text-foreground/60 transition-colors hover:text-foreground font-medium"
+              rel="noopener"
+              class="inline-flex items-center gap-1 text-muted-foreground transition-colors hover:text-foreground font-medium"
             >
               Docs
+              <Icon icon="radix-icons:arrow-top-right" class="h-3.5 w-3.5" />
             </a>
           </div>
         </div>
 
         <div class="flex items-center gap-4 flex-1 justify-end">
-          <div class="hidden md:block">
-            <DropdownMenu>
-              <DropdownMenuTrigger as-child>
-                <Button variant="outline" size="icon">
-                  <Icon icon="radix-icons:moon" 
-                    class="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
-                  <Icon icon="radix-icons:sun" 
-                    class="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
-                  <span class="sr-only">Toggle theme</span>
-                </Button>
-              </DropdownMenuTrigger>
-              <DropdownMenuContent align="end">
-                <DropdownMenuItem @click="mode = 'light'">
-                  Light
-                </DropdownMenuItem>
-                <DropdownMenuItem @click="mode = 'dark'">
-                  Dark
-                </DropdownMenuItem>
-                <DropdownMenuItem @click="mode = 'auto'">
-                  System
-                </DropdownMenuItem>
-              </DropdownMenuContent>
-            </DropdownMenu>
-          </div>
+          <Button
+            variant="outline"
+            size="icon"
+            class="hidden md:inline-flex relative"
+            aria-label="Toggle theme"
+            @click="toggleTheme"
+          >
+            <Icon
+              v-if="store === 'light'"
+              icon="radix-icons:sun"
+              class="h-[1.2rem] w-[1.2rem]"
+            />
+            <Icon
+              v-else-if="store === 'dark'"
+              icon="radix-icons:moon"
+              class="h-[1.2rem] w-[1.2rem]"
+            />
+            <Icon
+              v-else
+              icon="radix-icons:desktop"
+              class="h-[1.2rem] w-[1.2rem]"
+            />
+            <span class="sr-only">Toggle theme</span>
+          </Button>
 
           <button 
             class="md:hidden"
@@ -128,25 +142,32 @@ const toggleMenu = () => {
           <a 
             href="https://docs.siea.dev" 
             target="_blank"
-            class="text-foreground/60 transition-colors hover:text-foreground py-2"
+            rel="noopener"
+            class="inline-flex items-center gap-1 text-muted-foreground transition-colors hover:text-foreground py-2"
             @click="isMenuOpen = false"
           >
             Docs
+            <Icon icon="radix-icons:arrow-top-right" class="h-3.5 w-3.5" />
           </a>
 
-          <DropdownMenu>
-            <DropdownMenuTrigger as-child>
-              <Button variant="outline" class="w-full justify-start">
-                <Icon icon="radix-icons:moon" class="mr-2 h-4 w-4" />
-                Theme
-              </Button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" class="z-50">
-              <DropdownMenuItem @click="mode = 'light'">Light</DropdownMenuItem>
-              <DropdownMenuItem @click="mode = 'dark'">Dark</DropdownMenuItem>
-              <DropdownMenuItem @click="mode = 'auto'">System</DropdownMenuItem>
-            </DropdownMenuContent>
-          </DropdownMenu>
+          <Button variant="outline" class="w-full justify-start" @click="toggleTheme">
+            <Icon
+              v-if="store === 'light'"
+              icon="radix-icons:sun"
+              class="mr-2 h-4 w-4"
+            />
+            <Icon
+              v-else-if="store === 'dark'"
+              icon="radix-icons:moon"
+              class="mr-2 h-4 w-4"
+            />
+            <Icon
+              v-else
+              icon="radix-icons:desktop"
+              class="mr-2 h-4 w-4"
+            />
+            {{ store === 'auto' ? 'System' : store === 'dark' ? 'Dark' : 'Light' }}
+          </Button>
         </div>
       </div>
     </div>

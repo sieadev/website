@@ -1,15 +1,44 @@
 <script setup lang="ts">
-import { mdiOfficeBuilding, mdiGithub, mdiLinkedin, mdiBookOpenPageVariant } from '@mdi/js'
+import {
+  mdiOfficeBuilding,
+  mdiGithub,
+  mdiLinkedin,
+  mdiBookOpenPageVariant,
+  mdiArrowUp,
+  mdiArrowDown,
+  mdiArrowLeft,
+  mdiArrowRight,
+} from '@mdi/js'
 import { Card, CardContent } from '@/components/ui/card'
+
+const konamiArrows = [
+  mdiArrowUp,
+  mdiArrowUp,
+  mdiArrowDown,
+  mdiArrowDown,
+  mdiArrowLeft,
+  mdiArrowRight,
+  mdiArrowLeft,
+  mdiArrowRight,
+]
 </script>
 
 <template>
-  <Card class="hero-container">
+  <Card class="hero-container bg-transparent shadow-none">
     <CardContent class="hero-content">
       <div class="name-section">
         <h1 class="name-container">
           <span class="name-default">Sieadev</span>
-          <span class="name-hover">↑ ↑ ↓ ↓ ← → ← →</span>
+          <span class="name-hover konami" aria-hidden="true">
+            <svg
+              v-for="(arrow, i) in konamiArrows"
+              :key="i"
+              class="konami-arrow"
+              viewBox="0 0 24 24"
+            >
+              <path :d="arrow" />
+            </svg>
+          </span>
         </h1>
         <div class="title-container">
           <span class="title">Fullstack Developer</span>
@@ -53,7 +82,7 @@ import { Card, CardContent } from '@/components/ui/card'
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, hsl(var(--background)) 0%, hsl(var(--card)) 100%);
+  background: transparent;
   border: none;
 }
 
@@ -162,6 +191,20 @@ h1 {
   left: 0;
   top: 0;
   opacity: 0;
+}
+
+.konami {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2em;
+  height: 1em;
+}
+
+.konami-arrow {
+  width: 0.72em;
+  height: 0.72em;
+  fill: currentColor;
+  flex-shrink: 0;
 }
 
 .name-container:hover .name-default {

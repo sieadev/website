@@ -1,0 +1,68 @@
+# As a condition of accessing this website, you agree to abide by the following
+# content signals:
+#
+# (a)  If a content-signal = yes, you may collect content for the corresponding use.
+# (b)  If a content-signal = no, you may not collect content for the corresponding use.
+# (c)  If the website operator does not include a content signal for a corresponding use,
+#      the website operator neither grants nor restricts permission via content signal.
+#
+# search:   building a search index and providing search results
+# ai-input: inputting content into AI models (RAG, grounding, generative answers)
+# ai-train: training or fine-tuning AI models
+#
+# ANY RESTRICTIONS EXPRESSED VIA CONTENT SIGNALS ARE EXPRESS RESERVATIONS OF RIGHTS
+# UNDER ARTICLE 4 OF THE EUROPEAN UNION DIRECTIVE 2019/790.
+
+User-agent: *
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: GPTBot
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: OAI-SearchBot
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: ChatGPT-User
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: Claude-Web
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: anthropic-ai
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: ClaudeBot
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: Google-Extended
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: Amazonbot
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: Bytespider
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: CCBot
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: Applebot-Extended
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+User-agent: PerplexityBot
+Allow: /
+Content-Signal: search=yes, ai-input=yes, ai-train=yes
+
+Sitemap: https://siea.dev/sitemap.xml

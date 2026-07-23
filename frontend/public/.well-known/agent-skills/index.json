@@ -1,0 +1,12 @@
+{
+  "$schema": "https://schemas.agentskills.io/discovery/0.2.0/schema.json",
+  "skills": [
+    {
+      "name": "about-sieadev",
+      "type": "skill-md",
+      "description": "Learn who Sieadev is, what he builds, and how to contact him or find project docs.",
+      "url": "/.well-known/agent-skills/about-sieadev/SKILL.md",
+      "digest": "sha256:82cee07cfc5ff44b01152ed2917f0f933e6631b091209fdcf1790a13cee18ba5"
+    }
+  ]
+}

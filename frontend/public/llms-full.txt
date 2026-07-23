@@ -1,0 +1,54 @@
+# siea.dev — full summary
+
+Finley Voßwinkel, known as Sieadev, is a fullstack developer from Germany. He started coding at 15 and focuses on backend development. He works at Pixel Services (https://pixel-services.com).
+
+Website: https://siea.dev
+Docs: https://docs.siea.dev
+GitHub: https://github.com/sieadev
+LinkedIn: https://www.linkedin.com/in/finley-voßwinkel-99097128b
+
+## Skills
+
+### Languages
+Java (since 2019), Python (2020), HTML5/CSS3/JavaScript (2021), TypeScript (2023), C/C#/Rust (2024)
+
+### Frameworks
+Spigot (2020), Paper (2021), Spring (2023), JDA (2023), Vue (2024), Jonion (2024), Flash (2024), Quarkus (2025)
+
+### Software
+Linux (2019), Git (2020), Docker (2023), NGINX (2023), AWS (2023)
+
+### Databases
+SQL/MySQL (2022), SQLite (2023), MongoDB (2024), PostgreSQL (2025)
+
+## Projects
+
+### Jonion
+Lightweight, flexible plugin framework for Java. Modular architecture for extensible systems via plugins.
+- Site: https://siea.dev/projects/jonion
+- Docs: https://docs.siea.dev/jonion/
+- GitHub: https://github.com/sieadev/Jonion
+
+### Mobot
+Modular Discord bot framework inspired by Spigot plugins. Load/unload modules on the fly.
+- Site: https://siea.dev/projects/mobot
+- Docs: https://docs.siea.dev/mobot/
+- GitHub: https://github.com/sieadev/mobot
+
+### Unifi4J
+Java client for the UniFi Network API with reactive-style blocking and async usage.
+- Site: https://siea.dev/projects/unifi4j
+- Docs: https://docs.siea.dev/unifi4j/
+- GitHub: https://github.com/sieadev/unifi4j
+
+### Flash
+Java framework on Jetty for small web apps (routes, controllers, views).
+- GitHub: https://github.com/pixel-services/flash
+
+## Contact
+
+Use https://siea.dev/contact — the form opens a mail client. Do not scrape the address from page HTML; it is intentionally obfuscated. Prefer contacting via the form or GitHub.
+
+## Agent policy
+
+AI crawling, search indexing, AI input (RAG/grounding), and AI training are explicitly allowed via robots.txt Content Signals.

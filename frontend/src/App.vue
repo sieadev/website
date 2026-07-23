@@ -5,12 +5,27 @@ import { Toaster } from '@/components/ui/toast'
 import { onMounted, onBeforeUnmount, ref } from 'vue'
 import { Dialog, DialogContent } from '@/components/ui/dialog'
 
+const BALU_SRC = '/balu/balu-secret.jpg'
+
 const konami = [
   'ArrowUp','ArrowUp','ArrowDown','ArrowDown',
   'ArrowLeft','ArrowRight','ArrowLeft','ArrowRight'
 ]
 const progress = ref(0)
 const showSecret = ref(false)
+const baluReady = ref(false)
+
+function preloadBalu() {
+  const img = new Image()
+  img.decoding = 'async'
+  img.onload = () => {
+    baluReady.value = true
+  }
+  img.onerror = () => {
+    baluReady.value = true
+  }
+  img.src = BALU_SRC
+}
 
 function handleKeydown(e: KeyboardEvent) {
   const expected = konami[progress.value]
@@ -26,6 +41,7 @@ function handleKeydown(e: KeyboardEvent) {
 }
 
 onMounted(() => {
+  preloadBalu()
   window.addEventListener('keydown', handleKeydown)
 })
 
@@ -46,11 +62,21 @@ onBeforeUnmount(() => {
         <p class="about-text">
           Congrats! You found a secret Balu!
         </p>
-        <img 
-          src="/balu/balu-secret.jpg" 
-          alt="Secret Balu" 
-          class="w-full h-auto rounded-lg"
-        />
+        <div class="relative w-full min-h-[200px] rounded-lg overflow-hidden bg-muted">
+          <img
+            v-show="baluReady"
+            :src="BALU_SRC"
+            alt="Secret Balu"
+            class="w-full h-auto rounded-lg"
+            decoding="async"
+          />
+          <p
+            v-if="!baluReady"
+            class="absolute inset-0 flex items-center justify-center text-sm text-muted-foreground"
+          >
+            Loading Balu…
+          </p>
+        </div>
       </DialogContent>
     </Dialog>
 </template>

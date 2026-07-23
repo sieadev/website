@@ -1,0 +1,38 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://docs.siea.dev/",
+      "service-doc": [
+        {
+          "href": "https://docs.siea.dev/",
+          "type": "text/html"
+        }
+      ],
+      "service-desc": [
+        {
+          "href": "https://docs.siea.dev/",
+          "type": "text/html"
+        }
+      ]
+    },
+    {
+      "anchor": "https://siea.dev/",
+      "service-doc": [
+        {
+          "href": "https://siea.dev/llms.txt",
+          "type": "text/plain"
+        },
+        {
+          "href": "https://siea.dev/llms-full.txt",
+          "type": "text/plain"
+        }
+      ],
+      "service-desc": [
+        {
+          "href": "https://siea.dev/sitemap.xml",
+          "type": "application/xml"
+        }
+      ]
+    }
+  ]
+}
