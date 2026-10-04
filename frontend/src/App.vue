@@ -1,82 +1,60 @@
 <script setup lang="ts">
-import Navbar from "./components/Navbar.vue";
-import Footer from '@/components/Footer.vue'
-import { Toaster } from '@/components/ui/toast'
-import { onMounted, onBeforeUnmount, ref } from 'vue'
-import { Dialog, DialogContent } from '@/components/ui/dialog'
+import RackRails from '@/components/rack/RackRails.vue'
+import PatchPanel from '@/components/rack/PatchPanel.vue'
+import PowerStrip from '@/components/rack/PowerStrip.vue'
+import BaluDialog from '@/components/rack/BaluDialog.vue'
+import { useKonami } from '@/composables/useKonami'
 
-const BALU_SRC = '/balu/balu-secret.jpg'
-
-const konami = [
-  'ArrowUp','ArrowUp','ArrowDown','ArrowDown',
-  'ArrowLeft','ArrowRight','ArrowLeft','ArrowRight'
-]
-const progress = ref(0)
-const showSecret = ref(false)
-const baluReady = ref(false)
-
-function preloadBalu() {
-  const img = new Image()
-  img.decoding = 'async'
-  img.onload = () => {
-    baluReady.value = true
-  }
-  img.onerror = () => {
-    baluReady.value = true
-  }
-  img.src = BALU_SRC
-}
-
-function handleKeydown(e: KeyboardEvent) {
-  const expected = konami[progress.value]
-  if (e.key === expected) {
-    progress.value += 1
-    if (progress.value === konami.length) {
-      progress.value = 0
-      showSecret.value = true
-    }
-  } else {
-    progress.value = e.key === konami[0] ? 1 : 0
-  }
-}
-
-onMounted(() => {
-  preloadBalu()
-  window.addEventListener('keydown', handleKeydown)
-})
-
-onBeforeUnmount(() => {
-  window.removeEventListener('keydown', handleKeydown)
-})
+const { unlocked } = useKonami()
 </script>
 
 <template>
-  <div class="min-h-screen">
-      <Toaster/>
-      <Navbar />
-      <router-view></router-view>
-      <Footer />
+  <a href="#main" class="skip">Skip to content</a>
+  <div class="rack">
+    <RackRails />
+    <PatchPanel />
+    <main id="main" tabindex="-1">
+      <RouterView />
+    </main>
+    <PowerStrip />
   </div>
-  <Dialog :open="showSecret" @update:open="showSecret = $event">
-      <DialogContent class="sm:max-w-[425px]">
-        <p class="about-text">
-          Congrats! You found a secret Balu!
-        </p>
-        <div class="relative w-full min-h-[200px] rounded-lg overflow-hidden bg-muted">
-          <img
-            v-show="baluReady"
-            :src="BALU_SRC"
-            alt="Secret Balu"
-            class="w-full h-auto rounded-lg"
-            decoding="async"
-          />
-          <p
-            v-if="!baluReady"
-            class="absolute inset-0 flex items-center justify-center text-sm text-muted-foreground"
-          >
-            Loading Balu…
-          </p>
-        </div>
-      </DialogContent>
-    </Dialog>
+  <BaluDialog v-model="unlocked" />
 </template>
+
+<style scoped>
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 100;
+  padding: 0.5rem 1rem;
+  background: var(--led-amber);
+  color: #1d1500;
+  font-weight: 600;
+}
+.skip:focus {
+  top: 1rem;
+}
+.rack {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  max-width: 1180px;
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: 0 0 6px;
+  box-shadow: 0 0 0 1px rgb(0 0 0 / 0.12), 0 0 60px rgb(0 0 0 / 0.25);
+}
+main {
+  flex: 1;
+  position: relative;
+}
+main:focus {
+  outline: none;
+}
+@media (max-width: 719px) {
+  .rack {
+    --rail-w: 0.9rem;
+  }
+}
+</style>

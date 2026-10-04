@@ -1,123 +1,273 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
+  /* Light: white rack gear (think UniFi). Dark: classic black server rack. */
   :root {
-    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    --room: #d6dade;
+    --rail: #bcc2c9;
+    --rail-edge: #98a0aa;
+    --hole: #8d959f;
+    --plate: #f3f4f6;
+    --plate-hi: #ffffff;
+    --plate-lo: #e3e6e9;
+    --plate-edge: #b3bac2;
+    --inset: #dde1e5;
+    --silk: #262c35;
+    --silk-dim: #545c68;
+    --screw: #a7aeb7;
+    --led-amber: #e39400;
+    --led-green: #12a150;
+    --led-blue: #1f7ae8;
+    --led-off: #c9ced4;
+    --tape: #1d5cc0;
+    --tape-text: #ffffff;
+    --lcd-bg: #141a12;
+    --lcd-text: #9cf27a;
+    --lcd-dim: #4d7a3c;
+    --focus: #1f7ae8;
+    --danger: #c0392b;
 
-    --background: 0 0% 99%;
-    --foreground: 0 0% 6%;
+    --sans: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif;
+    --cond: 'IBM Plex Sans Condensed', 'IBM Plex Sans', sans-serif;
+    --mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --u: 44px; /* one rack unit */
+    --rail-w: 2.75rem;
 
-    --muted: 0 0% 95%;
-    --muted-foreground: 0 0% 40%;
+    color-scheme: light;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 6%;
-
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 6%;
-
-    --border: 0 0% 89%;
-    --input: 0 0% 89%;
-
-    --primary: 0 0% 6%;
-    --primary-foreground: 0 0% 99%;
-
-    --secondary: 0 0% 94%;
-    --secondary-foreground: 0 0% 12%;
-
-    --accent: 0 0% 94%;
-    --accent-foreground: 0 0% 12%;
-
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 0 0% 99%;
-
-    --ring: 0 0% 6%;
-
-    --radius: 0.125rem;
-
-    --chart-1: 0 0% 15%;
-    --chart-2: 0 0% 30%;
-    --chart-3: 0 0% 45%;
-    --chart-4: 0 0% 60%;
-    --chart-5: 0 0% 75%;
+    --background: 210 9% 85%;
+    --foreground: 215 17% 18%;
+    --muted: 210 10% 90%;
+    --muted-foreground: 214 10% 37%;
+    --border: 212 11% 73%;
+    --input: 212 11% 73%;
+    --ring: 213 81% 52%;
+    --primary: 215 17% 18%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 10% 90%;
+    --secondary-foreground: 215 17% 18%;
+    --accent: 39 100% 45%;
+    --accent-foreground: 215 17% 18%;
+    --card: 220 14% 96%;
+    --card-foreground: 215 17% 18%;
+    --popover: 220 14% 96%;
+    --popover-foreground: 215 17% 18%;
+    --destructive: 6 63% 46%;
+    --destructive-foreground: 0 0% 100%;
   }
 
   .dark {
-    --background: 0 0% 4%;
-    --foreground: 0 0% 96%;
+    --room: #1c1e22;
+    --rail: #2b2f35;
+    --rail-edge: #474d56;
+    --hole: #15171a;
+    --plate: #3a3f46;
+    --plate-hi: #444a52;
+    --plate-lo: #33373d;
+    --plate-edge: #23262b;
+    --inset: #2c3036;
+    --silk: #dde0e5;
+    --silk-dim: #adb4be;
+    --screw: #646b75;
+    --led-amber: #ffb000;
+    --led-green: #3ddc84;
+    --led-blue: #55adff;
+    --led-off: #272b30;
+    --lcd-bg: #1a1405;
+    --lcd-text: #ffb000;
+    --lcd-dim: #7a5a12;
+    --focus: #55adff;
+    --danger: #ff7b6b;
+    color-scheme: dark;
 
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 55%;
-
-    --popover: 0 0% 6%;
-    --popover-foreground: 0 0% 96%;
-
-    --card: 0 0% 6%;
-    --card-foreground: 0 0% 96%;
-
-    --border: 0 0% 14%;
-    --input: 0 0% 14%;
-
-    --primary: 0 0% 96%;
-    --primary-foreground: 0 0% 4%;
-
-    --secondary: 0 0% 12%;
-    --secondary-foreground: 0 0% 96%;
-
-    --accent: 0 0% 12%;
-    --accent-foreground: 0 0% 96%;
-
-    --destructive: 0 62% 45%;
-    --destructive-foreground: 0 0% 96%;
-
-    --ring: 0 0% 85%;
-
-    --chart-1: 0 0% 90%;
-    --chart-2: 0 0% 75%;
-    --chart-3: 0 0% 60%;
-    --chart-4: 0 0% 45%;
-    --chart-5: 0 0% 30%;
-  }
-}
-
-@layer base {
-  * {
-    @apply border-border;
+    --background: 220 9% 12%;
+    --foreground: 220 11% 88%;
+    --muted: 216 9% 25%;
+    --muted-foreground: 215 9% 71%;
+    --border: 216 9% 31%;
+    --input: 216 9% 31%;
+    --card: 215 9% 25%;
+    --card-foreground: 220 11% 88%;
+    --popover: 215 9% 25%;
+    --popover-foreground: 220 11% 88%;
+    --primary: 220 11% 88%;
+    --primary-foreground: 220 9% 12%;
   }
 
   html {
-    @apply scroll-smooth;
+    background: var(--room);
+    color: var(--silk);
+    font-family: var(--sans);
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
   }
-
   body {
-    @apply bg-background text-foreground antialiased;
-    font-family: var(--font-sans);
+    min-height: 100vh;
+    line-height: 1.6;
   }
-
-  code, pre, .font-mono {
-    font-family: var(--font-mono);
+  code, pre, kbd {
+    font-family: var(--mono);
   }
-
   ::selection {
-    @apply bg-foreground/15 text-foreground;
+    background: var(--led-amber);
+    color: #1a1405;
   }
-
-  * {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
-  }
-  *::-webkit-scrollbar {
-    display: none;
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+@layer components {
+  /* Brushed faceplate surface */
+  .plate {
+    position: relative;
+    background:
+      repeating-linear-gradient(90deg, rgb(255 255 255 / 0.018) 0 1px, transparent 1px 3px),
+      linear-gradient(180deg, var(--plate-hi), var(--plate) 18%, var(--plate) 82%, var(--plate-lo));
+    border: 1px solid var(--plate-edge);
+    border-radius: 3px;
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.08),
+      0 1px 0 rgb(0 0 0 / 0.25);
+  }
+
+  /* Recessed area on a faceplate (grilles, screens, port blocks) */
+  .inset {
+    background: var(--inset);
+    border-radius: 3px;
+    box-shadow: inset 0 1px 3px rgb(0 0 0 / 0.3), inset 0 0 0 1px rgb(0 0 0 / 0.08);
+  }
+
+  /* Silkscreen: the printed text on hardware */
+  .silk {
+    font-family: var(--cond);
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-size: 0.72rem;
+    color: var(--silk-dim);
+  }
+
+  .lcd {
+    background: var(--lcd-bg);
+    color: var(--lcd-text);
+    font-family: var(--mono);
+    border-radius: 3px;
+    box-shadow: inset 0 0 0 2px rgb(0 0 0 / 0.5), inset 0 2px 10px rgb(0 0 0 / 0.6);
+    text-shadow: 0 0 6px color-mix(in srgb, var(--lcd-text) 55%, transparent);
+  }
+
+  .vent {
+    background-image: radial-gradient(circle at center, var(--hole) 0 2.4px, transparent 2.8px);
+    background-size: 9px 9px;
+    border-radius: 2px;
+  }
+
+  /* Hardware push button */
+  .hw-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.55rem 1rem;
+    font-family: var(--cond);
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--silk);
+    text-decoration: none;
+    background: linear-gradient(180deg, var(--plate-hi), var(--plate-lo));
+    border: 1px solid var(--plate-edge);
+    border-radius: 3px;
+    box-shadow: 0 2px 0 var(--plate-edge), inset 0 1px 0 rgb(255 255 255 / 0.12);
+    transition: transform 80ms, box-shadow 80ms;
+    cursor: pointer;
+  }
+  .hw-btn:hover {
+    filter: brightness(1.06);
+  }
+  .hw-btn:active {
+    transform: translateY(2px);
+    box-shadow: 0 0 0 var(--plate-edge), inset 0 1px 2px rgb(0 0 0 / 0.25);
+  }
+  .hw-btn-primary {
+    background: linear-gradient(180deg, color-mix(in srgb, var(--led-amber) 92%, white), var(--led-amber));
+    border-color: color-mix(in srgb, var(--led-amber) 60%, black);
+    box-shadow: 0 2px 0 color-mix(in srgb, var(--led-amber) 50%, black);
+    color: #1d1500;
+  }
+
+  .text-link {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-color: color-mix(in srgb, var(--led-amber) 70%, transparent);
+    text-decoration-thickness: 1.5px;
+    text-underline-offset: 0.2em;
+  }
+  .text-link:hover {
+    text-decoration-color: var(--led-amber);
+  }
+
+  .prose-plate {
+    color: var(--silk);
+    max-width: 40rem;
+  }
+  .dim {
+    color: var(--silk-dim);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@layer components {
+  /* Mounting ear with screws, shared by every rack device */
+  .rack-ear {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 0;
+    background: linear-gradient(180deg, var(--plate-hi), var(--plate) 20%, var(--plate-lo));
+    border: 1px solid var(--plate-edge);
+  }
+  .rack-ear:first-child {
+    border-right: none;
+    border-radius: 3px 0 0 3px;
+  }
+  .rack-ear:last-child {
+    border-left: none;
+    border-radius: 0 3px 3px 0;
+  }
+  .rack-ear.single {
+    justify-content: center;
+  }
+  .screw {
+    display: block;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background:
+      linear-gradient(45deg, transparent 44%, rgb(0 0 0 / 0.45) 44% 56%, transparent 56%),
+      radial-gradient(circle at 35% 35%, color-mix(in srgb, var(--screw) 60%, white), var(--screw));
+    box-shadow: 0 1px 1px rgb(0 0 0 / 0.4);
+  }
+  @media (max-width: 719px) {
+    .screw {
+      width: 7px;
+      height: 7px;
+    }
+    .rack-ear {
+      padding: 6px 0;
+    }
   }
 }
