@@ -4,17 +4,11 @@ import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Textarea } from '@/components/ui/textarea'
+import { openMail } from '@/lib/email'
 
 const title = ref('')
 const message = ref('')
 
-// XOR-obfuscated bytes for contact@siea.dev — never stored as plaintext in the bundle
-const KEY = 0x5a
-const ENCODED = [57, 53, 52, 46, 59, 57, 46, 26, 41, 51, 63, 59, 116, 62, 63, 44]
-
-function decodeEmail(): string {
-  return String.fromCharCode(...ENCODED.map((b) => b ^ KEY))
-}
 
 function handleSubmit(event: Event) {
   event.preventDefault()
@@ -23,11 +17,7 @@ function handleSubmit(event: Event) {
     return
   }
 
-  const address = decodeEmail()
-  const subject = encodeURIComponent(title.value)
-  const body = encodeURIComponent(message.value)
-
-  window.location.href = `mailto:${address}?subject=${subject}&body=${body}`
+  openMail(title.value, message.value)
 }
 </script>
 

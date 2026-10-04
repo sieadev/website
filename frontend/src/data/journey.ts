@@ -14,7 +14,7 @@ export interface JourneyEntry {
 
 export const journeyEntries: JourneyEntry[] = [
   {
-    id: 'highschool',
+    id: 'highschool-leibniz',
     title: 'High School',
     organization: 'Leibnitz Gymnasium Essen',
     location: 'Essen, Germany',
@@ -25,7 +25,7 @@ export const journeyEntries: JourneyEntry[] = [
     skills: ['English', 'Chemistry']
   },
   {
-    id: 'highschool',
+    id: 'highschool-stoppenberg',
     title: 'High School',
     organization: 'Gymnasium am Stoppenberg',
     location: 'Essen, Germany',
@@ -58,3 +58,30 @@ export const journeyEntries: JourneyEntry[] = [
   }
 ];
 
+
+function monthIndex(date: string): number {
+  const [year, month = '1'] = date.split('-')
+  return Number(year) * 12 + (Number(month) - 1)
+}
+
+/** Entries ordered by start date. Oldest first unless `newestFirst` is set. */
+export function journeyChronological(newestFirst = false): JourneyEntry[] {
+  const sorted = [...journeyEntries].sort((a, b) => monthIndex(a.startDate) - monthIndex(b.startDate))
+  return newestFirst ? sorted.reverse() : sorted
+}
+
+export function formatJourneyDate(date: string, month: 'short' | 'long' = 'short'): string {
+  if (!date.includes('-')) return date
+  const [year, m] = date.split('-')
+  const label = new Date(Number(year), Number(m) - 1).toLocaleString('en-GB', { month })
+  return `${label} ${year}`
+}
+
+export function formatJourneyRange(entry: JourneyEntry, month: 'short' | 'long' = 'short'): string {
+  const end = entry.endDate ? formatJourneyDate(entry.endDate, month) : 'present'
+  return `${formatJourneyDate(entry.startDate, month)} – ${end}`
+}
+
+export function startYear(entry: JourneyEntry): number {
+  return Number(entry.startDate.slice(0, 4))
+}
