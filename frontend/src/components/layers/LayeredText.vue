@@ -42,53 +42,58 @@ onBeforeUnmount(() => {
 
 <template>
   <component :is="as" ref="root" class="layered" :class="{ interactive }" :style="{ '--spread': `${spread}px` }">
-    <span class="layer layer-slate" aria-hidden="true">{{ text }}</span>
-    <span class="layer layer-gold" aria-hidden="true">{{ text }}</span>
-    <span class="layer layer-ink">{{ text }}</span>
+    <span class="layer layer-ink" :data-text="text">{{ text }}</span>
   </component>
 </template>
 
 <style scoped>
+/* The slate and marigold layers are pseudo-elements so the text exists once for assistive tech. */
 .layered {
   --dx: 0;
   --dy: 0;
   position: relative;
-  display: inline-grid;
+  display: inline-block;
   isolation: isolate;
 }
-.layer {
-  grid-area: 1 / 1;
-  transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
-}
-.layer-slate {
-  color: var(--slate);
-  transform: translate(calc(var(--dx) * var(--spread) + 0.06em), calc(var(--dy) * var(--spread) + 0.06em));
-  z-index: -2;
-}
-.layer-gold {
-  color: var(--marigold);
-  transform: translate(calc(var(--dx) * var(--spread) * 0.5 + 0.03em), calc(var(--dy) * var(--spread) * 0.5 + 0.03em));
-  z-index: -1;
-}
 .layer-ink {
+  position: relative;
+  display: inline-block;
   color: var(--ink);
 }
+.layer-ink::before,
+.layer-ink::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  transition: transform 500ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.layer-ink::before {
+  color: var(--slate);
+  z-index: -2;
+  transform: translate(calc(var(--dx) * var(--spread) + 0.06em), calc(var(--dy) * var(--spread) + 0.06em));
+}
+.layer-ink::after {
+  color: var(--marigold);
+  z-index: -1;
+  transform: translate(calc(var(--dx) * var(--spread) * 0.5 + 0.03em), calc(var(--dy) * var(--spread) * 0.5 + 0.03em));
+}
 
-.interactive .layer-slate {
-  animation: register-slate 1100ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
-}
-.interactive .layer-gold {
-  animation: register-gold 1100ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
-}
 .interactive .layer-ink {
   animation: register-ink 1100ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
 }
+.interactive .layer-ink::before {
+  animation: register-slate 1100ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
+.interactive .layer-ink::after {
+  animation: register-gold 1100ms cubic-bezier(0.2, 0.7, 0.2, 1) backwards;
+}
 
 @keyframes register-slate {
-  from { transform: translate(0.5em, 0.35em); opacity: 0; }
+  from { transform: translate(0.62em, 0.43em); opacity: 0; }
 }
 @keyframes register-gold {
-  from { transform: translate(0.25em, 0.18em); opacity: 0; }
+  from { transform: translate(0.37em, 0.26em); opacity: 0; }
 }
 @keyframes register-ink {
   from { transform: translate(-0.12em, -0.08em); opacity: 0; }
