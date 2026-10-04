@@ -28,23 +28,28 @@ export type MarkdownState = 'loading' | 'ready' | 'error'
 export function useProjectMarkdown(slug: Ref<string | undefined>, container: Ref<HTMLElement | null>) {
   const html = ref('')
   const state = ref<MarkdownState>('loading')
+  let request = 0
 
   async function load() {
     if (!slug.value) return
+    // Ignore responses that arrive after the user has already moved to another project
+    const current = ++request
     state.value = 'loading'
     html.value = ''
     try {
       const res = await fetch(`/content/projects/${slug.value}.md`)
+      if (current !== request) return
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
       // Vite's SPA fallback answers unknown paths with index.html
       if ((res.headers.get('content-type') ?? '').includes('text/html')) throw new Error('Not markdown')
       const raw = await marked.parse(await res.text())
+      if (current !== request) return
       html.value = DOMPurify.sanitize(raw, { ADD_ATTR: ['class'] })
       state.value = 'ready'
       await nextTick()
       enhance()
     } catch {
-      state.value = 'error'
+      if (current === request) state.value = 'error'
     }
   }
 
