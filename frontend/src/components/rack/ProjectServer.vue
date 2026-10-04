@@ -5,7 +5,7 @@ import Led from './Led.vue'
 import DymoLabel from './DymoLabel.vue'
 import type { ProjectItem } from '@/data/projects'
 
-const props = defineProps<{ project: ProjectItem; bay: number; startOpen?: boolean }>()
+const props = defineProps<{ project: ProjectItem; bay: number; startOpen?: boolean; headingLevel?: 2 | 3 }>()
 const open = ref(props.startOpen ?? false)
 const id = useId()
 </script>
@@ -21,7 +21,9 @@ const id = useId()
 
       <div class="ident">
         <span class="silk bay">Bay {{ String(bay).padStart(2, '0') }}</span>
-        <h3 :id="`${id}-name`" class="name"><DymoLabel :tilt="bay % 2 ? -0.8 : 0.6">{{ project.name }}</DymoLabel></h3>
+        <component :is="headingLevel === 2 ? 'h2' : 'h3'" :id="`${id}-name`" class="name">
+          <DymoLabel :tilt="bay % 2 ? -0.8 : 0.6">{{ project.name }}</DymoLabel>
+        </component>
       </div>
 
       <ul class="tags" aria-label="Tags">
