@@ -1,0 +1,188 @@
+/* Long-form project write-ups (rendered markdown) */
+.md {
+  font-size: 1.04rem;
+  line-height: 1.7;
+  max-width: 44rem;
+}
+.md > * + * {
+  margin-top: 1.1em;
+}
+.md h2 {
+  margin-top: 2.6em;
+  font-family: var(--cond);
+  font-size: 2.1rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+}
+.md h3 {
+  margin-top: 2em;
+  font-size: 1.3rem;
+  font-family: var(--cond);
+  font-weight: 700;
+}
+.md h2 + *,
+.md h3 + * {
+  margin-top: 0.6em;
+}
+.md p,
+.md li {
+  color: var(--ink-2);
+}
+.md strong {
+  color: var(--ink);
+  font-weight: 650;
+}
+.md a {
+  text-decoration: underline;
+  text-decoration-color: var(--yellow);
+  text-decoration-skip-ink: none;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.18em;
+}
+.md ul {
+  list-style: none;
+  padding-left: 0;
+}
+.md ul > li {
+  position: relative;
+  padding-left: 1.4em;
+}
+.md ul > li + li,
+.md ol > li + li {
+  margin-top: 0.45em;
+}
+.md ul > li::before {
+  content: '';
+  position: absolute;
+  left: 0.15em;
+  top: 0.62em;
+  width: 0.55em;
+  height: 0.55em;
+  border: 3px solid var(--ink);
+  border-radius: 50%;
+  background: var(--surface);
+  width: 0.7em;
+  height: 0.7em;
+  top: 0.48em;
+}
+.md ol {
+  list-style: decimal;
+  padding-left: 1.4em;
+}
+.md hr {
+  border: 0;
+  height: 6px;
+  margin: 3em 0;
+  border-radius: 6px;
+  background: var(--rule);
+}
+.md blockquote {
+  padding: 0.8em 1.1em;
+  border-left: 4px solid var(--yellow);
+  background: var(--surface);
+  font-style: italic;
+}
+.md :not(pre) > code {
+  padding: 0.1em 0.35em;
+  border-radius: 4px;
+  background: var(--surface-2);
+  color: var(--ink);
+  font-size: 0.86em;
+}
+.md table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.92rem;
+}
+.md th,
+.md td {
+  padding: 0.55em 0.8em;
+  border: 1.5px solid var(--rule);
+  text-align: left;
+}
+.md th {
+  background: var(--surface-2);
+}
+
+.md .code-block {
+  position: relative;
+  margin-top: 1.4em;
+  border: 1.5px solid var(--rule);
+  border-radius: var(--r);
+  background: #0b2236;
+  max-width: 100%;
+}
+.dark .md .code-block {
+  background: #061523;
+}
+.md pre {
+  overflow-x: auto;
+  padding: 1.1rem 1.2rem;
+  font-size: 0.84rem;
+  line-height: 1.6;
+  color: #e7ecf3;
+}
+.md pre code.hljs {
+  background: transparent;
+  padding: 0;
+}
+.md .code-copy {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  padding: 0.2rem 0.6rem;
+  border: 1px solid #24486b;
+  border-radius: 4px;
+  background: #102d47;
+  color: #f2f4f3;
+  font-size: 0.75rem;
+  font-weight: 600;
+  opacity: 0;
+  transition: opacity 120ms;
+}
+.md .code-block:hover .code-copy,
+.md .code-copy:focus-visible {
+  opacity: 1;
+}
+@media (hover: none) {
+  .md .code-copy {
+    opacity: 1;
+  }
+}
+
+.hljs-keyword,
+.hljs-meta .hljs-keyword,
+.hljs-built_in,
+.hljs-selector-tag,
+.hljs-tag .hljs-name {
+  color: #f7b500;
+}
+.hljs-string,
+.hljs-attr,
+.hljs-attribute,
+.hljs-template-variable {
+  color: #9fd3ff;
+}
+.hljs-title,
+.hljs-title.class_,
+.hljs-title.function_,
+.hljs-type {
+  color: #ffffff;
+  font-weight: 600;
+}
+.hljs-number,
+.hljs-literal,
+.hljs-symbol {
+  color: #f7d07a;
+}
+.hljs-comment,
+.hljs-quote {
+  color: #7d8ba3;
+  font-style: italic;
+}
+.hljs-meta,
+.hljs-variable,
+.hljs-params {
+  color: #c9d3e3;
+}

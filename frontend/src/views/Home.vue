@@ -1,209 +1,182 @@
 <script setup lang="ts">
-import Hero from "@/components/Hero.vue";
-import { ref, computed } from "vue";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import {
-  mdiLanguageTypescript,
-  mdiLanguageJavascript,
-  mdiLanguagePython,
-  mdiLanguageJava,
-  mdiLanguageHtml5,
-  mdiLanguageC,
-  mdiLanguageCss3,
-  mdiLanguageCsharp,
-  mdiLanguageRust,
-  mdiPackage,
-  mdiVuejs,
-  mdiLightningBolt,
-  mdiDocker,
-  mdiGit,
-  mdiLinux,
-  mdiServer,
-  mdiDatabase,
-  mdiLeaf,
-  mdiAws,
-  mdiWateringCan,
-  mdiSend,
-  mdiMessageFast
-} from "@mdi/js";
+import RouteMap from '@/components/transit/RouteMap.vue'
+import DestinationSign from '@/components/transit/DestinationSign.vue'
+import Timetable from '@/components/transit/Timetable.vue'
+import SignArrow from '@/components/transit/SignArrow.vue'
+import { profile } from '@/data/profile'
+import { projects } from '@/data/projects'
 
-type Skill = {
-  name: string
-  icon: string
-  startYear: number
-};
-
-type Category = {
-  key: string
-  label: string
-  skills: Skill[]
-};
-
-const categories = ref<Category[]>([
-  {
-    key: "langs",
-    label: "Languages",
-    skills: [
-      { name: "Java", icon: mdiLanguageJava, startYear: 2019 },
-      { name: "Python", icon: mdiLanguagePython, startYear: 2020 },
-      { name: "HTML5", icon: mdiLanguageHtml5, startYear: 2021 },
-      { name: "CSS3", icon: mdiLanguageCss3, startYear: 2021 },
-      { name: "JavaScript", icon: mdiLanguageJavascript, startYear: 2021 },
-      { name: "TypeScript", icon: mdiLanguageTypescript, startYear: 2023 },
-      { name: "C", icon: mdiLanguageC, startYear: 2024 },
-      { name: "C#", icon: mdiLanguageCsharp, startYear: 2024 },
-      { name: "Rust", icon: mdiLanguageRust, startYear: 2024 },
-    ],
-  },
-  {
-    key: "frameworks",
-    label: "Frameworks",
-    skills: [
-      { name: "Spigot", icon: mdiWateringCan, startYear: 2020 },
-      { name: "Paper", icon: mdiSend, startYear: 2021 },
-      { name: "Spring", icon: mdiLeaf, startYear: 2023 },
-      { name: "JDA", icon: mdiMessageFast, startYear: 2023 },
-      { name: "Vue", icon: mdiVuejs, startYear: 2024 },
-      { name: "Jonion", icon: mdiPackage, startYear: 2024 },
-      { name: "Flash", icon: mdiLightningBolt, startYear: 2024 },
-      { name: "Quarkus", icon: mdiLeaf, startYear: 2025 }
-    ],
-  },
-  {
-    key: "software",
-    label: "Software",
-    skills: [
-      { name: "Linux", icon: mdiLinux, startYear: 2019 },
-      { name: "Git", icon: mdiGit, startYear: 2020 },
-      { name: "Docker", icon: mdiDocker, startYear: 2023 },
-      { name: "NGINX", icon: mdiServer, startYear: 2023 },
-      { name: "AWS", icon: mdiAws, startYear: 2023 },
-    ],
-  },
-  {
-    key: "databases",
-    label: "Databases",
-    skills: [
-      { name: "SQL", icon: mdiDatabase, startYear: 2022 },
-      { name: "MySQL", icon: mdiDatabase, startYear: 2022 },
-      { name: "SQLite", icon: mdiDatabase, startYear: 2023 },
-      { name: "MongoDB", icon: mdiLeaf, startYear: 2024 },
-      { name: "Postgre", icon: mdiDatabase, startYear: 2025 },
-    ],
-  },
-]);
-
-const selectedKey = ref<string>(categories.value[0]?.key ?? "langs");
-const currentYear = new Date().getFullYear();
-
-function yearsSince(year: number): number {
-  return Math.max(0, currentYear - year);
-}
-
-function levelClass(year: number): string {
-  const yrs = yearsSince(year);
-  if (yrs < 1) return "bg-muted/40 text-muted-foreground border-muted";
-  if (yrs < 2) return "bg-secondary text-secondary-foreground border-secondary/40";
-  if (yrs < 3) return "bg-blue-500/10 text-blue-600 dark:text-blue-400 border-blue-500/20";
-  if (yrs < 4) return "bg-green-500/10 text-green-600 dark:text-green-400 border-green-500/20";
-  if (yrs < 5) return "bg-amber-500/10 text-amber-600 dark:text-amber-400 border-amber-500/20";
-  if (yrs < 10) return "bg-red-500/10 text-red-600 dark:text-red-400 border-red-500/20";
-  return "bg-purple-500/10 text-purple-600 dark:text-purple-400 border-purple-500/20";
-}
-
-
-function formatExperience(year: number): string {
-  const yrs = yearsSince(year);
-  if (yrs === 0) return '<1 yr';
-  if (yrs === 1) return '1+ yr';
-  return `${yrs}+ yrs`;
-}
-
-
-const selectedCategory = computed(() =>
-  categories.value.find((c) => c.key === selectedKey.value)
-);
+const listed = projects
 </script>
 
 <template>
-  <div class="flex flex-col items-center justify-center">
-    <div class="flex items-center justify-center">
-      <Hero />
+  <section class="hero wrap" aria-labelledby="hero-name">
+    <div class="sign station">
+      <div class="station-text">
+        <h1 id="hero-name" class="station-name cond">{{ profile.name }}</h1>
+        <p class="station-sub cond">Fullstack developer in Essen</p>
+      </div>
+      <img src="/logo.svg" alt="" class="operator" width="88" height="88" />
     </div>
-    
 
-    <div class="w-full max-w-2xl px-4 pt-10 pb-10 sm:min-h-[45vh] lg:pt-0 mb-10">
-
-      <Card>
-          <CardHeader>
-            <CardTitle>My Skill Set</CardTitle>
-          </CardHeader>
-        <CardContent>
-          <!-- Mobile: all categories as stacked sections (no filter UI) -->
-          <div class="space-y-8 sm:hidden">
-            <section v-for="c in categories" :key="c.key">
-              <h3 class="text-sm font-semibold tracking-wide text-muted-foreground uppercase mb-3">
-                {{ c.label }}
-              </h3>
-              <div class="grid grid-cols-1 gap-3">
-                <div
-                  v-for="s in c.skills"
-                  :key="s.name"
-                  :class="['flex items-center gap-3 border rounded-md p-3', levelClass(s.startYear)]"
-                >
-                  <svg class="w-6 h-6 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                    <path :d="s.icon" />
-                  </svg>
-                  <div class="flex flex-col">
-                    <span class="font-medium leading-none">{{ s.name }}</span>
-                    <span class="text-xs text-muted-foreground">since {{ s.startYear }} · {{ formatExperience(s.startYear) }}</span>
-                  </div>
-                </div>
-              </div>
-            </section>
-          </div>
-
-          <!-- Desktop: category filter + grid -->
-          <div class="hidden sm:block">
-            <div class="mb-6 flex justify-center">
-              <div class="inline-flex rounded-md border p-1 bg-card gap-1">
-                <Button
-                  v-for="c in categories"
-                  :key="c.key"
-                  variant="ghost"
-                  :class="[
-                    'px-3 py-1 h-9 rounded-md',
-                    selectedKey === c.key ? 'bg-accent text-accent-foreground' : 'hover:bg-muted'
-                  ]"
-                  @click="selectedKey = c.key"
-                >
-                  {{ c.label }}
-                </Button>
-              </div>
-            </div>
-
-            <div
-              v-if="selectedCategory"
-              class="grid grid-cols-2 lg:grid-cols-3 gap-3"
-            >
-              <div
-                v-for="s in selectedCategory.skills"
-                :key="s.name"
-                :class="['flex items-center gap-3 border rounded-md p-3', levelClass(s.startYear)]"
-              >
-                <svg class="w-6 h-6" viewBox="0 0 24 24" fill="currentColor">
-                  <path :d="s.icon" />
-                </svg>
-                <div class="flex flex-col">
-                  <span class="font-medium leading-none">{{ s.name }}</span>
-                  <span class="text-xs text-muted-foreground">since {{ s.startYear }} · {{ formatExperience(s.startYear) }}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
+    <div class="intro">
+      <p class="lead">
+        Most people online know me as {{ profile.handle }}. I'm {{ profile.age }}, I started coding at {{ profile.startedCodingAt }},
+        and I run <a :href="profile.company.href" target="_blank" rel="noopener" class="link">Pixel Services</a>,
+        a server hosting and development company here in Essen.
+      </p>
+      <div class="actions">
+        <RouterLink to="/projects" class="btn btn-sign">Projects <SignArrow /></RouterLink>
+        <RouterLink to="/contact" class="btn">Get in touch</RouterLink>
+      </div>
     </div>
-  </div>
+
+    <div class="route-block">
+      <div class="route-head">
+        <h2 class="h-small cond">The route so far</h2>
+        <RouterLink to="/journey" class="link">Every stop in detail</RouterLink>
+      </div>
+      <RouteMap />
+    </div>
+  </section>
+
+  <section class="wrap block" aria-labelledby="projects-title">
+    <div class="block-head">
+      <h2 id="projects-title" class="h-section">Projects</h2>
+      <p class="lede">Open-source frameworks and libraries, mostly Java. Follow a sign to read how it's built.</p>
+    </div>
+    <div class="dest-grid">
+      <DestinationSign v-for="p in listed" :key="p.name" :project="p" />
+    </div>
+  </section>
+
+  <section class="wrap block" aria-labelledby="skills-title">
+    <div class="block-head">
+      <h2 id="skills-title" class="h-section">Skills</h2>
+      <p class="lede">Languages, frameworks, software and databases I work with.</p>
+    </div>
+    <Timetable />
+  </section>
+
+  <section class="wrap block" aria-labelledby="cta-title">
+    <RouterLink to="/contact" class="sign cta">
+      <span>
+        <span id="cta-title" class="cta-title cond">Next stop: your project</span>
+        <span class="cta-sub">Backend services, Minecraft plugins, Discord bots or hosting. Tell me where you want to go.</span>
+      </span>
+      <SignArrow class="cta-arrow" />
+    </RouterLink>
+  </section>
 </template>
+
+<style scoped>
+.hero {
+  padding-top: clamp(1.5rem, 4vw, 3rem);
+}
+.station {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: clamp(1.25rem, 3vw, 2rem) clamp(1.25rem, 3.5vw, 2.5rem);
+}
+.station-name {
+  font-weight: 700;
+  font-size: clamp(2.6rem, 8vw, 6.5rem);
+  line-height: 0.92;
+  letter-spacing: -0.005em;
+}
+.station-sub {
+  margin-top: 0.6rem;
+  font-weight: 500;
+  font-size: clamp(1.15rem, 2.2vw, 1.6rem);
+  opacity: 0.92;
+}
+.operator {
+  width: clamp(3.5rem, 8vw, 5.5rem);
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 0 0 3px var(--sign-ink);
+}
+.intro {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 1.25rem 3rem;
+  padding: 1.75rem 0 0;
+}
+.lead {
+  max-width: 40rem;
+  font-size: 1.15rem;
+}
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+.route-block {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+  padding: clamp(1.25rem, 3vw, 2.5rem) clamp(1.25rem, 3vw, 2.5rem) clamp(1rem, 2vw, 1.5rem);
+  background: var(--surface);
+  border-radius: var(--r);
+  box-shadow: 0 0 0 1px var(--rule);
+}
+.route-head {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 0.5rem 1.5rem;
+  margin-bottom: 1rem;
+}
+.h-small {
+  font-weight: 700;
+  font-size: 1.75rem;
+}
+.block {
+  padding-top: clamp(4rem, 9vw, 6.5rem);
+}
+.block-head {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 2rem;
+  margin-bottom: 1.75rem;
+}
+.dest-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 28rem), 1fr));
+  gap: 1.25rem;
+}
+.cta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: clamp(1.5rem, 4vw, 2.5rem);
+  text-decoration: none;
+}
+.cta-title {
+  display: block;
+  font-weight: 700;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  line-height: 1;
+}
+.cta-sub {
+  display: block;
+  margin-top: 0.6rem;
+  max-width: 36rem;
+  opacity: 0.92;
+}
+.cta-arrow {
+  width: clamp(2.5rem, 6vw, 4.5rem);
+  height: clamp(2.5rem, 6vw, 4.5rem);
+  flex-shrink: 0;
+  transition: transform 160ms ease;
+}
+.cta:hover .cta-arrow {
+  transform: translateX(6px);
+}
+</style>

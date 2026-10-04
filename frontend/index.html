@@ -2,13 +2,25 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <link rel="icon" type="image/svg+xml" href="/logo.svg" />
-    <link rel="preload" as="image" href="/balu/balu-secret.jpg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sieadev</title>
+    <meta name="description" content="Finley Voßwinkel (Sieadev): fullstack developer from Essen, founder of Pixel Services, author of modular Java frameworks like Jonion and Mobot." />
+    <meta name="theme-color" content="#F2F4F3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0B2236" media="(prefers-color-scheme: dark)" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:ital,wght@0,400;0,500;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap" />
+    <title>Sieadev · Finley Voßwinkel</title>
+    <script>
+      // Apply the stored theme before first paint to avoid a flash
+      try {
+        var m = localStorage.getItem('vueuse-color-scheme') || 'auto'
+        var dark = m === 'dark' || (m === 'auto' && matchMedia('(prefers-color-scheme: dark)').matches)
+        if (dark) document.documentElement.classList.add('dark')
+      } catch (e) {}
+    </script>
   </head>
-  <body class="">
+  <body>
     <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
