@@ -4,23 +4,8 @@ import {
   mdiGithub,
   mdiLinkedin,
   mdiBookOpenPageVariant,
-  mdiArrowUp,
-  mdiArrowDown,
-  mdiArrowLeft,
-  mdiArrowRight,
 } from '@mdi/js'
 import { Card, CardContent } from '@/components/ui/card'
-
-const konamiArrows = [
-  mdiArrowUp,
-  mdiArrowUp,
-  mdiArrowDown,
-  mdiArrowDown,
-  mdiArrowLeft,
-  mdiArrowRight,
-  mdiArrowLeft,
-  mdiArrowRight,
-]
 </script>
 
 <template>
@@ -29,16 +14,6 @@ const konamiArrows = [
       <div class="name-section">
         <h1 class="name-container">
           <span class="name-default">Sieadev</span>
-          <span class="name-hover konami" aria-hidden="true">
-            <svg
-              v-for="(arrow, i) in konamiArrows"
-              :key="i"
-              class="konami-arrow"
-              viewBox="0 0 24 24"
-            >
-              <path :d="arrow" />
-            </svg>
-          </span>
         </h1>
         <div class="title-container">
           <span class="title">Fullstack Developer</span>
@@ -179,40 +154,9 @@ h1 {
   width: max-content;
 }
 
-.name-default,
-.name-hover {
+.name-default {
   display: inline-block;
-  transition: opacity 0.3s ease-in-out;
   white-space: nowrap;
-}
-
-.name-hover {
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
-}
-
-.konami {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.2em;
-  height: 1em;
-}
-
-.konami-arrow {
-  width: 0.72em;
-  height: 0.72em;
-  fill: currentColor;
-  flex-shrink: 0;
-}
-
-.name-container:hover .name-default {
-  opacity: 0;
-}
-
-.name-container:hover .name-hover {
-  opacity: 1;
 }
 
 .company-link {
