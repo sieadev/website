@@ -28,7 +28,7 @@ GET https://vid2llm.dev/v/https://www.tiktok.com/@scout2015/video/67183353908450
 [0:00] ...
 ```
 
-It works with public videos from TikTok, YouTube, Instagram and X, up to 15 minutes long. Other public pages and direct video file links are tried too, as long as the site's `robots.txt` allows it.
+It is built for public TikTok and YouTube videos (Shorts included), up to 15 minutes long. Instagram and X links are accepted too, and so are other public pages and direct video file links when the site's `robots.txt` allows it. Nothing behind a login is read.
 
 ---
 
@@ -55,7 +55,7 @@ The price depends on the video's length: $0.005 plus $0.005 per started minute.
 | 3 minutes | $0.02 |
 | 10 minutes | $0.055 |
 
-`GET /quote/<video-url>` is free and returns the title, the length and the exact price before the agent pays anything.
+`GET /quote/<video-url>` is free and returns the title, the length and the exact price before the agent pays anything. The current rates are always at [vid2llm.dev/pricing](https://vid2llm.dev/pricing).
 
 ---
 
@@ -74,14 +74,24 @@ It adds two tools:
 
 Use a dedicated wallet holding a few dollars of USDC on Base. `VID2LLM_MAX_PRICE` (default `$1`) caps what the server will sign for a single video.
 
+The same package is a command-line tool, for agents that have a shell:
+
+```bash
+npx -y vid2llm-mcp price <video-url>   # free: length and cost
+npx -y vid2llm-mcp watch <video-url>   # paid: markdown on stdout
+```
+
 ---
 
 ## How it's built
 
 - **Backend:** Python with FastAPI. `yt-dlp` fetches the metadata and the audio, and `faster-whisper` transcribes it locally on CPU.
 - **Edge:** a Cloudflare Worker serves the landing page, rejects bad URLs and caches free quotes. The backend publishes no ports and is only reachable through a Cloudflare Tunnel.
-- **Payments:** the x402 middleware, settling in USDC on Base.
-- **Safety:** every outbound fetch goes through an egress guard that only connects to public addresses, so a link can't be used to reach the server's own network.
+- **Payments:** the x402 middleware, settling in USDC on Base through Coinbase's facilitator.
+- **MCP server and CLI:** one TypeScript package.
+- **Delivery:** GitHub Actions runs the tests and publishes the container images.
 - **Caching:** results are kept for 7 days, so a repeat request for the same video is served without reprocessing.
+
+A planned option adds on-screen text and a description of what is shown in the video.
 
 Try it at [vid2llm.dev](https://vid2llm.dev).

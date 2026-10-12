@@ -13,7 +13,7 @@ export interface ProjectItem {
 export const projects: ProjectItem[] = [
   {
     name: 'vid2llm',
-    description: 'vid2llm turns a public video link into text an AI agent can read: author, description, stats and a timestamped transcript. Agents pay per video with x402 in USDC, from one cent, with no account and no API key. It works with TikTok, YouTube, Instagram and X, over plain HTTP or as an MCP server.',
+    description: 'vid2llm turns a public video link into text an AI agent can read: author, description, stats and a timestamped transcript. Agents pay per video with x402 in USDC, from one cent, with no account and no API key. It is built for TikTok and YouTube, also accepts Instagram and X links, and can be used over plain HTTP or as an MCP server.',
     image: '/projects/vid2llm.png',
     tags: ['Python', 'AI Agents', 'x402', 'MCP'],
     website: 'https://vid2llm.dev',
