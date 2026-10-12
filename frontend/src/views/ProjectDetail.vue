@@ -6,7 +6,7 @@ import DOMPurify from 'dompurify'
 import hljs from 'highlight.js'
 import 'highlight.js/styles/github.min.css'
 import '@/assets/hljs-dark.css'
-import { mdiGithub, mdiBookOpenPageVariant, mdiArrowLeft, mdiContentCopy } from '@mdi/js'
+import { mdiGithub, mdiBookOpenPageVariant, mdiArrowLeft, mdiContentCopy, mdiWeb } from '@mdi/js'
 import { projects } from '@/data/projects'
 
 const route = useRoute()
@@ -133,6 +133,18 @@ function goBack() {
           </span>
         </div>
         <div class="project-actions">
+          <a
+            v-if="project.website"
+            :href="project.website"
+            target="_blank"
+            rel="noopener"
+            class="action-link"
+          >
+            <svg class="w-5 h-5" viewBox="0 0 24 24">
+              <path :d="mdiWeb" fill="currentColor" />
+            </svg>
+            Website
+          </a>
           <a
             v-if="project.docs"
             :href="project.docs"
