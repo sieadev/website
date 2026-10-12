@@ -40,17 +40,17 @@ defineProps<Props>()
           </div>
           
           <div class="flex gap-3">
-            <a v-if="website" :href="website" target="_blank" class="text-muted-foreground hover:text-foreground">
+            <a v-if="website" :href="website" target="_blank" rel="noopener" @click.stop class="text-muted-foreground hover:text-foreground">
               <svg class="w-6 h-6" viewBox="0 0 24 24">
                 <path :d="mdiWeb" fill="currentColor" />
               </svg>
             </a>
-            <a v-if="docs" :href="docs" target="_blank" class="text-muted-foreground hover:text-foreground">
+            <a v-if="docs" :href="docs" target="_blank" rel="noopener" @click.stop class="text-muted-foreground hover:text-foreground">
               <svg class="w-6 h-6" viewBox="0 0 24 24">
                 <path :d="mdiBookOpenPageVariant " fill="currentColor" />
               </svg>
             </a>
-            <a v-if="github" :href="github" target="_blank" class="text-muted-foreground hover:text-foreground">
+            <a v-if="github" :href="github" target="_blank" rel="noopener" @click.stop class="text-muted-foreground hover:text-foreground">
               <svg class="w-6 h-6" viewBox="0 0 24 24">
                 <path :d="mdiGithub" fill="currentColor" />
               </svg>
