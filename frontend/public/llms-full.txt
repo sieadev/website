@@ -23,6 +23,12 @@ SQL/MySQL (2022), SQLite (2023), MongoDB (2024), PostgreSQL (2025)
 
 ## Projects
 
+### vid2llm
+Turns a public video link (TikTok, YouTube, Instagram, X) into text an AI agent can read: author, description, stats and a timestamped transcript. Paid per video with x402 in USDC on Base, no account or API key. Also available as an MCP server.
+- Site: https://siea.dev/projects/vid2llm
+- Website: https://vid2llm.dev
+- MCP server: https://www.npmjs.com/package/vid2llm-mcp
+
 ### Jonion
 Lightweight, flexible plugin framework for Java. Modular architecture for extensible systems via plugins.
 - Site: https://siea.dev/projects/jonion

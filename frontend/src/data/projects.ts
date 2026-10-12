@@ -5,11 +5,20 @@ export interface ProjectItem {
   tags: string[]
   github?: string
   docs?: string
+  website?: string
   /** Slug for detail page; omit for blurred teaser (always last in list) */
   slug?: string
 }
 
 export const projects: ProjectItem[] = [
+  {
+    name: 'vid2llm',
+    description: 'vid2llm turns a public video link into text an AI agent can read: author, description, stats and a timestamped transcript. Agents pay per video with x402 in USDC, from one cent, with no account and no API key. It works with TikTok, YouTube, Instagram and X, over plain HTTP or as an MCP server.',
+    image: '/projects/vid2llm.png',
+    tags: ['Python', 'AI Agents', 'x402', 'MCP'],
+    website: 'https://vid2llm.dev',
+    slug: 'vid2llm'
+  },
   {
     name: 'Jonion',
     description: 'Jonion is a lightweight, flexible plugin framework for Java applications. It provides a clean, modular architecture that makes it easy to build extensible systems by "layering" functionality through plugins.',
