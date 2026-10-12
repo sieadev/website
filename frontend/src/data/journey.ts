@@ -14,47 +14,78 @@ export interface JourneyEntry {
 
 export const journeyEntries: JourneyEntry[] = [
   {
-    id: 'highschool',
+    id: 'leibniz-gymnasium',
     title: 'High School',
-    organization: 'Leibnitz Gymnasium Essen',
+    organization: 'Leibniz Gymnasium Essen',
     location: 'Essen, Germany',
-    description: 'Started high school education with focus on english and chemistry.',
+    description: 'High school with a focus on English, chemistry, history and math. Part of Medien Scouts NRW and Be Strong for Kids.',
     type: 'education',
-    startDate: '2017-08',
-    endDate: '2024-12',
-    skills: ['English', 'Chemistry']
+    startDate: '2022-08',
+    endDate: '2024-09',
+    skills: ['English', 'Chemistry', 'History', 'Math']
   },
   {
-    id: 'highschool',
-    title: 'High School',
-    organization: 'Gymnasium am Stoppenberg',
+    id: 'gymnasium-am-stoppenberg',
+    title: 'High School Diploma',
+    organization: 'Gymnasium Am Stoppenberg',
     location: 'Essen, Germany',
-    description: 'Completed high school education with focus on english and computer science.',
+    description: 'Completed high school with a focus on computer science and English.',
     type: 'education',
-    startDate: '2024-12',
-    endDate: '2025-07',
-    skills: ['English', 'Computer Science']
+    startDate: '2024-10',
+    endDate: '2025-06',
+    skills: ['Computer Science', 'English']
   },
   {
-    id: 'internship',
+    id: 'kt-systems',
     title: 'System Administrator Intern',
     organization: 'KT-Systems',
     location: 'Essen, Germany',
-    description: 'Working with Linux and Windows systems and learning about network administration.',
+    description: 'Worked with Linux and Windows systems and learned about network administration.',
     type: 'job',
     startDate: '2023-06',
     endDate: '2023-07',
     skills: ['Linux', 'Windows Server']
   },
   {
-    id: 'current-job',
-    title: 'Founder',
+    id: 'freelance',
+    title: 'Software Developer',
+    organization: 'Freelance',
+    location: 'Germany (remote)',
+    description: 'Commissioned software development for clients.',
+    type: 'job',
+    startDate: '2022-12',
+    endDate: '2026-08',
+    skills: ['JavaScript', 'English']
+  },
+  {
+    id: 'pixel-services',
+    title: 'CEO - Head of Software Development',
     organization: 'Pixel Services',
-    location: 'Essen, Germany',
+    location: 'Germany',
     description: 'Providing Server Hosting and Development Services.',
     type: 'job',
-    startDate: '2025-03',
+    startDate: '2025-05',
     skills: ['Docker', 'Java', 'Typescript', 'Linux']
+  },
+  {
+    id: 'rit',
+    title: 'Software Developer Apprentice',
+    organization: 'R.iT GmbH',
+    location: 'Bochum, Germany',
+    description: 'Full-time apprenticeship in software development.',
+    type: 'job',
+    startDate: '2026-08',
+    skills: ['Software Development', 'C#']
+  },
+  {
+    id: 'tbs1',
+    title: 'Vocational Degree, Computer Software Engineering',
+    organization: 'TBS1 - Technische Berufliche Schule 1',
+    location: 'Bochum, Germany',
+    description: 'Vocational school alongside the apprenticeship at R.iT.',
+    type: 'education',
+    startDate: '2026-08',
+    endDate: '2029-08',
+    skills: ['Software Engineering']
   }
 ];
-
