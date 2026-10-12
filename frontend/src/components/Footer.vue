@@ -1,5 +1,18 @@
 <script setup lang="ts">
+import { mdiArrowUp, mdiArrowDown, mdiArrowLeft, mdiArrowRight } from '@mdi/js'
+
 const currentYear = new Date().getFullYear()
+
+const konamiArrows = [
+  mdiArrowUp,
+  mdiArrowUp,
+  mdiArrowDown,
+  mdiArrowDown,
+  mdiArrowLeft,
+  mdiArrowRight,
+  mdiArrowLeft,
+  mdiArrowRight,
+]
 </script>
 
 <template>
@@ -69,6 +82,16 @@ const currentYear = new Date().getFullYear()
       <!-- Copyright -->
       <div class="border-t mt-4 pt-4 text-center text-xs text-muted-foreground">
         <p>&copy; {{ currentYear }} Sieadev. All rights reserved.</p>
+        <div class="flex justify-center gap-1 mt-2" aria-hidden="true">
+          <svg
+            v-for="(arrow, i) in konamiArrows"
+            :key="i"
+            class="w-3 h-3"
+            viewBox="0 0 24 24"
+          >
+            <path :d="arrow" fill="currentColor" />
+          </svg>
+        </div>
       </div>
     </div>
   </footer>
