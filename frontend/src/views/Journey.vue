@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { journeyEntries, type JourneyEntry } from '@/data/journey';
+import { journeyEntries, type JourneyEntry, type JourneyEntryType } from '@/data/journey';
 import { Icon } from '@iconify/vue';
 
 // Sort entries by start date (most recent first)
@@ -67,7 +67,7 @@ function getTypeColor(type: JourneyEntryType): string {
 
         <div class="space-y-8">
           <div
-            v-for="(entry, index) in sortedEntries"
+            v-for="entry in sortedEntries"
             :key="entry.id"
             class="relative"
           >
